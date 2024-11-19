@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     @vite(['../resources/css/nicepage.css', '../resources/css/registros/registrarDevolucion.css'])
-    @vite(['../resources/js/jquery.js', '../resources/js/nicepage.js'])
+    @vite(['../resources/js/nicepage.js'])
     <meta name="generator" content="Nicepage 7.0.3, nicepage.com">
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet"
@@ -38,68 +38,50 @@
                     <h2 class="u-text u-text-default u-text-1">Devoluciones<br>
                     </h2>
                     <div class="u-form u-form-1">
-                        <form action="{{ route('saveDevolution') }}" method='POST'
-                            class="u-clearfix u-form-spacing-45 u-form-vertical u-inner-form"
-                            style="padding: 10px;">
-                            {{csrf_field()}}
+                        <!-- Formulario -->
+                        <form action="{{ route('saveDevolucion') }}" method="POST"
+                            class="u-clearfix u-form-spacing-45 u-form-vertical u-inner-form" style="padding: 10px;">
+                            {{ csrf_field() }}
                             <div class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-1">
                                 <label for="select-c607" class="u-label u-label-1">Seleccionar cliente</label>
                                 <div class="u-form-select-wrapper">
                                     <select id="select-c607" name="id_cliente"
-                                        class="u-grey-80 u-input u-input-rectangle u-input-1" required="required">
-                                        <option value="Item 1" data-calc="">Item 1</option>
-                                        <option value="Item 2" data-calc="">Item 2</option>
-                                        <option value="Item 3" data-calc="">Item 3</option>
+                                        class="u-grey-80 u-input u-input-rectangle u-input-1" required>
+                                        <option value="1">Cliente 1</option>
+                                        <option value="2">Cliente 2</option>
+                                        <option value="3">Cliente 3</option>
                                     </select>
-                                    <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1"
-                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16"
-                                        style="fill:currentColor;" xml:space="preserve">
-                                        <polygon class="st0" points="8,12 2,4 14,4 "></polygon>
-                                    </svg>
                                 </div>
                             </div>
                             <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-2">
-                                <label for="date-65bb" class="u-label u-label-2">Fecha</label>
-                                <input type="text" placeholder="MM/DD/AAAA" id="date-65bb" name="fecha_venta"
-                                    class="u-grey-80 u-input u-input-rectangle u-input-2" data-date-format="mm/dd/yyyy">
+                                @if($errors->first('fecha_venta'))
+                                    <label for="date-65bb" class="u-label u-label-2">Fecha</label>
+                                @endif
+                                <input type="date" placeholder="MM/DD/AAAA" id="date-65bb" name="fecha_venta"
+                                    class="u-grey-80 u-input u-input-rectangle u-input-2" 
+                                    value="{{ old('fecha_venta') }}">
                             </div>
                             <div class="u-form-group u-form-select u-form-group-3">
                                 <label for="select-d405" class="u-label u-label-3">Seleccionar producto</label>
                                 <div class="u-form-select-wrapper">
                                     <select id="select-d405" name="id_producto"
-                                        class="u-grey-80 u-input u-input-rectangle u-input-3" required="required">
-                                        <option value="Item 1" data-calc="">Item 1</option>
-                                        <option value="Item 2" data-calc="">Item 2</option>
-                                        <option value="Item 3" data-calc="">Item 3</option>
+                                        class="u-grey-80 u-input u-input-rectangle u-input-3" required>
+                                        <option value="1">Producto 1</option>
+                                        <option value="2">Producto 2</option>
+                                        <option value="3">Producto 3</option>
                                     </select>
-                                    <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1"
-                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16"
-                                        style="fill:currentColor;" xml:space="preserve">
-                                        <polygon class="st0" points="8,12 2,4 14,4 "></polygon>
-                                    </svg>
                                 </div>
                             </div>
                             <div class="u-form-group u-form-message u-form-group-4">
-                                <label for="text-2ca3" class="u-label u-label-4">Motivo de la devolucion</label>
-                                <textarea id="text-2ca3" name="cantidad"
-                                    class="u-grey-80 u-input u-input-rectangle u-input-4"></textarea>
+                                <label for="text-2ca3" class="u-label u-label-4">Motivo de la devolución</label>
+                                <textarea id="text-2ca3" name="motivo"
+                                    class="u-grey-80 u-input u-input-rectangle u-input-4" value="{{ old('motivo') }}"></textarea>
                             </div>
                             <div class="u-align-center u-form-group u-form-submit">
-                                <input type="submit"
-                                    class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1"
-                                    value="Registrar devolución">
+                                <button type="submit"
+                                    class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1">Registrar
+                                    devolución</button>
                             </div>
-                            <div class="u-form-send-message u-form-send-success"> 
-                                Gracias! Tu mensaje ha sido enviado.
-                            </div>
-                            <div class="u-form-send-error u-form-send-message">
-                                No se puede enviar su mensaje. Por
-                                favor, corrija los errores y vuelva a intentarlo.
-                            </div>
-                            <input type="hidden" value="" name="recaptchaResponse">
-                            <input type="hidden" name="formServices" value="544b23d9-71dd-99b1-1cd7-56f467c3653a">
                         </form>
                     </div>
                 </div>

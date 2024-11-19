@@ -24,6 +24,7 @@ class registerController extends Controller
     }
     
     public function registerDevolutionView(){
+        
         return view('Registros.registrarDevolucion');
     }
 
@@ -32,19 +33,20 @@ class registerController extends Controller
         // Code of Angel
     }
 
+    public function saveClient(Request $request){
+        return ('wasaaa');
+    }
+
     public function saveDevolution(Request $request){
         $validatedData = $request->validate([
-            'fecha_venta' => 'required|regex:/^[09][09]+$/',
-            'v' => 'required|regex:/^[A-Z][A-Z,a-z, ,ó,é,ü,ñ,Ñ]+$/',
-            '' => 'required|regex:/^[A-Z][A-Z,a-z, ,ó,é,ü,ñ,Ñ]+$/',
-            '' => 'required',
-            '' => 'required',
-            '' => 'required',
-            '' => 'required'
+            'fecha_venta' => 'required',
+            'motivo' => 'required'
         ]);
 
-        return ('Hola tonoto');
+        return response()->json(['message' => 'Ruta alcanzada correctamente']);
     }
+
+
     
     public function registerCategorie(){
         // Code of Mireya

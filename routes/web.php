@@ -35,7 +35,8 @@ Route::get('productos/beetlejuice', [productController::class, 'productBeetlejui
 // Registrar
 Route::get('catalogos/registrar/cliente', [registerController::class, 'registerClientView'])->name('registrarCliente');
 Route::get('registrar/devolucion', [registerController::class, 'registerDevolutionView'])->name('registrarDevolucion');
-Route::post('registrar/guardar-devolucion', [registerController::class, 'saveDevolution'])->name('saveDevolution');
+Route::post('registarr/guardar-cliente', [registerController::class, 'saveClient'])->name('saveCliente');
+Route::post('registrar/guardar-devolucion', [registerController::class, 'saveDevolution'])->name('saveDevolucion');
 // Route of Mireya
 // Route of Bryan
 
