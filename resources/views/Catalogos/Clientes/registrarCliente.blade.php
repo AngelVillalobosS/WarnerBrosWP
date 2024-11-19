@@ -29,7 +29,7 @@
     @include('components.pageHeader')
     <section class="u-clearfix u-image u-section-1" id="sec-32d5" data-image-width="626" data-image-height="391">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <a href="{{ route('catalogos/cliente') }}" class="u-border-1 u-border-active-grey-40 u-border-black u-border-hover-black u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-1">Regresar </a>
+        <a href="{{ route('catalogoCliente') }}" class="u-border-1 u-border-active-grey-40 u-border-black u-border-hover-black u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-1">Regresar </a>
         <div class="u-align-center u-container-style u-group u-group-1" data-animation-name="customAnimationIn" data-animation-duration="1000" data-animation-delay="0">
           <div class="u-container-layout">
             <h2 class="u-text u-text-default u-text-1">Registrar Clientes </h2>
