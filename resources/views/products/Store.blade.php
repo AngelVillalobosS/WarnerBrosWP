@@ -5,27 +5,14 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>Tienda</title>
-    <link rel="stylesheet" href="../nicepage.css" media="screen">
-<link rel="stylesheet" href="../Product-List-Template.css" media="screen">
+    <link rel="stylesheet" href="../../css/nicepage.css" media="screen">
+<link rel="stylesheet" href="../../css/Product-List-Template.css" media="screen">
     <script class="u-script" type="text/javascript" src="../jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="../nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 7.0.3, nicepage.com">
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -50,7 +37,7 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-grey-40 u-text-hover-grey-40" href="../" target="_blank" style="padding: 10px 35px;">Inicio</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-grey-40 u-text-hover-grey-40" href="../home.blade.php" target="_blank" style="padding: 10px 35px;">Inicio</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-grey-40 u-text-hover-grey-40" style="padding: 10px 35px;">Registros</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10"><li class="u-nav-item"><a class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link" href="../Registros/registrar_alquileres.html">Renta de productos</a>
 </li><li class="u-nav-item"><a class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link" href="../Registros/registrar_ventas.html">Ventas</a>
 </li><li class="u-nav-item"><a class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link" href="../Registros/registrar_devoluciones.html">Devoluciones</a>
@@ -75,7 +62,7 @@
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-5"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../" target="_blank">Inicio</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-5"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../home.blade.php" target="_blank">Inicio</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link">Registros</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../Registros/registrar_alquileres.html">Renta de productos</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../Registros/registrar_ventas.html">Ventas</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../Registros/registrar_devoluciones.html">Devoluciones</a>
