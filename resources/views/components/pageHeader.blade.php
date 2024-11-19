@@ -38,7 +38,7 @@
                                 </li>
                                 <li class="u-nav-item"><a
                                         class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link"
-                                        href="Registros/registrar_ventas.html">Ventas</a>
+                                        href="{{ route('registrarVenta') }}">Ventas</a>
                                 </li>
                                 <li class="u-nav-item"><a
                                         class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link"
@@ -58,7 +58,7 @@
                             <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
                                 <li class="u-nav-item"><a
                                         class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link"
-                                        href="Catalogos/Categorias/categorias.html">Categorías</a>
+                                        href="{{route('catalogoCategoria')}}">Categorías</a>
                                 </li>
                                 <li class="u-nav-item"><a
                                         class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link"

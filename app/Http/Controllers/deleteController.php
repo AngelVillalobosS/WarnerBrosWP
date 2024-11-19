@@ -9,4 +9,8 @@ class deleteController extends Controller
     public function deleteClienteView(){
         return view('Catalogos.Clientes.eliminarClientes');
     }
+
+    public function deleteCategoriaView(){
+        return view('Catalogos.Categorias.eliminarCategoria');
+    }
 }

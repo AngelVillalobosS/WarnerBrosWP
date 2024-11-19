@@ -11,7 +11,7 @@ class catalogosController extends Controller
     }
 
     public function catCategoriasView(){
-        // Code of Mireya
+        return view('Catalogos.Categorias.categorias');
     }
     
     public function catProductosView(){

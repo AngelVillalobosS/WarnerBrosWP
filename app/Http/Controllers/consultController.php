@@ -12,7 +12,7 @@ class consultController extends Controller
     }
 
     public function consultCategorieView(){
-        // 
+        return view('Catalogos.Categorias.consultarCategoria');
     }
 
     public function consultProductView(){

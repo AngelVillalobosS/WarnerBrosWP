@@ -8,6 +8,7 @@ use App\Http\Controllers\homeController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\reportController;
+use App\Http\Controllers\modifyController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,16 +18,21 @@ Route::get('home',[homeController::class,'homeView'])->name('home'); // Pagina P
 
 // Catalogos    
 Route::get('catalogos/cliente',[catalogosController::class, 'catClientesView'])->name('catalogoCliente');
+Route::get('catalogos/categorias',[catalogosController::class, 'catCategoriasView'])->name('catalogoCategoria');
 
 // Consultas
 Route::get('catalogos/consultas/clientes',[consultController::class, 'consulClientView'])->name('consultarCliente');
-    // Route of Mireya
+Route::get('catalogos/consultas/categorias',[consultController::class, 'consultCategorieView'])->name('consultarCategoria');
     // Route of Bryan
 
 // Eliminar
 Route::get('catalogos/eliminar/cliente', [deleteController::class, 'deleteClienteView'])->name('eliminarCliente');
+Route::get('catalogos/eliminar/categoria', [deleteController::class, 'deleteCategoriaView'])->name('eliminarCategoria');
 
 // Modificar
+Route::get('catalogos/modificar/categoria', [modifyController::class, 'modifyCategorieView'])->name('modificarCategoria');
+Route::post('catalogos/modificar/categoria/funcion', [modifyController::class, 'modifyCatFunctView'])->name('modificarCatFunc');
+
 
 // Productos
 Route::get('productos/beetlejuice', [productController::class, 'productBeetlejuiceView'])->name('productoBeetlejuice');
@@ -34,7 +40,9 @@ Route::get('productos/beetlejuice', [productController::class, 'productBeetlejui
 // Registrar
 Route::get('catalogos/registrar/cliente',[registerController::class, 'registerClientView'])->name('registrarCliente');
 Route::get('registrar/devolucion',[registerController::class, 'registerDevolutionView'])->name('registrarDevolucion');
-    // Route of Mireya
+Route::get('registrar/venta',[registerController::class, 'registerVentaView'])->name('registrarVenta');
+Route::get('catalogos/registrar/categoria',[registerController::class, 'registerCategorieView'])->name('registrarCategoria');
+Route::POST('catalogos/registrar/categoria',[registerController::class, 'registerCategorie'])->name('registerCategorie');
     // Route of Bryan
 
 // Reportes
