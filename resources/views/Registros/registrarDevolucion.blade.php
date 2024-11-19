@@ -7,8 +7,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     @vite(['../resources/css/nicepage.css', '../resources/css/registros/registrarDevolucion.css'])
-    <script class="u-script" type="text/javascript" src="../jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="../nicepage.js" defer=""></script>
+    @vite(['../resources/js/jquery.js', '../resources/js/nicepage.js'])
     <meta name="generator" content="Nicepage 7.0.3, nicepage.com">
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet"
@@ -39,9 +38,10 @@
                     <h2 class="u-text u-text-default u-text-1">Devoluciones<br>
                     </h2>
                     <div class="u-form u-form-1">
-                        <form action="https://forms.nicepagesrv.com/v2/form/process"
-                            class="u-clearfix u-form-spacing-45 u-form-vertical u-inner-form" source="email" name="form"
+                        <form action="{{ route('saveDevolution') }}" method='POST'
+                            class="u-clearfix u-form-spacing-45 u-form-vertical u-inner-form"
                             style="padding: 10px;">
+                            {{csrf_field()}}
                             <div class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-1">
                                 <label for="select-c607" class="u-label u-label-1">Seleccionar cliente</label>
                                 <div class="u-form-select-wrapper">
@@ -62,8 +62,7 @@
                             <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-2">
                                 <label for="date-65bb" class="u-label u-label-2">Fecha</label>
                                 <input type="text" placeholder="MM/DD/AAAA" id="date-65bb" name="fecha_venta"
-                                    class="u-grey-80 u-input u-input-rectangle u-input-2" required=""
-                                    data-date-format="mm/dd/yyyy">
+                                    class="u-grey-80 u-input u-input-rectangle u-input-2" data-date-format="mm/dd/yyyy">
                             </div>
                             <div class="u-form-group u-form-select u-form-group-3">
                                 <label for="select-d405" class="u-label u-label-3">Seleccionar producto</label>
@@ -88,15 +87,17 @@
                                     class="u-grey-80 u-input u-input-rectangle u-input-4"></textarea>
                             </div>
                             <div class="u-align-center u-form-group u-form-submit">
-                                <a href="#"
-                                    class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1">Registrar
-                                    devolución </a>
-                                <input type="submit" value="submit" class="u-form-control-hidden">
+                                <input type="submit"
+                                    class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1"
+                                    value="Registrar devolución">
                             </div>
-                            <div class="u-form-send-message u-form-send-success"> Gracias! Tu mensaje ha sido enviado.
+                            <div class="u-form-send-message u-form-send-success"> 
+                                Gracias! Tu mensaje ha sido enviado.
                             </div>
-                            <div class="u-form-send-error u-form-send-message"> No se puede enviar su mensaje. Por
-                                favor, corrija los errores y vuelva a intentarlo. </div>
+                            <div class="u-form-send-error u-form-send-message">
+                                No se puede enviar su mensaje. Por
+                                favor, corrija los errores y vuelva a intentarlo.
+                            </div>
                             <input type="hidden" value="" name="recaptchaResponse">
                             <input type="hidden" name="formServices" value="544b23d9-71dd-99b1-1cd7-56f467c3653a">
                         </form>
@@ -105,7 +106,7 @@
             </div>
         </div>
     </section>
-  @include('components.pageFooter')
+    @include('components.pageFooter')
 </body>
 
 </html>

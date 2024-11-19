@@ -8,7 +8,7 @@ class consultController extends Controller
 {
     // Regresar Vistas
     public function consultClientView(){
-        return view('Categorias.Clientes.consultarCliente');
+        return view('Catalogos.Clientes.consultarCliente');
     }
 
     public function consultCategorieView(){

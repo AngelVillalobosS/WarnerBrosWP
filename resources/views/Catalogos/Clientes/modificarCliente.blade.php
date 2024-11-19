@@ -6,8 +6,8 @@
   <meta charset="utf-8">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <title>WB | Eliminar Cliente</title>
-  @vite(['../resources/css/nicepage.css', '../resources/css/Catalogos/eliminarCliente.css'])
+  <title>modificar_clientes</title>
+  @vite(['../resources/css/nicepage.css', '../resources/css/Catalogos/modificarCliente.css'])
   @vite(['../resources/js/jquery.js', '../resources/js/nicepage.js'])
   <script class="u-script" type="text/javascript" src="../../jquery.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="../../nicepage.js" defer=""></script>
@@ -24,7 +24,7 @@
     }
   </script>
   <meta name="theme-color" content="#478ac9">
-  <meta property="og:title" content="eliminar_clientes">
+  <meta property="og:title" content="modificar_clientes">
   <meta property="og:description" content="">
   <meta property="og:type" content="website">
   <meta data-intl-tel-input-cdn-path="intlTelInput/">
@@ -32,8 +32,7 @@
 
 <body data-path-to-root="../../" data-include-products="true" class="u-body u-xl-mode" data-lang="es">
   @include('components.pageHeader')
-
-  <section class="u-clearfix u-image u-section-1" id="sec-0f31" data-image-width="626" data-image-height="391">
+  <section class="u-clearfix u-image u-section-1" id="sec-33d9" data-image-width="626" data-image-height="391">
     <div class="u-clearfix u-sheet u-sheet-1">
       <a href="{{ route('catalogoCliente') }}"
         class="u-border-1 u-border-active-grey-40 u-border-black u-border-hover-black u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-1">Regresar
@@ -41,7 +40,7 @@
       <div class="u-align-center u-container-style u-group u-group-1" data-animation-name="customAnimationIn"
         data-animation-duration="1000" data-animation-delay="0">
         <div class="u-container-layout">
-          <h2 class="u-text u-text-default u-text-1">Eliminar Clientes </h2>
+          <h2 class="u-text u-text-default u-text-1">Modificar Clientes </h2>
           <div class="u-form u-form-1">
             <form action="https://forms.nicepagesrv.com/v2/form/process"
               class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form"
@@ -53,12 +52,11 @@
               </div>
               <div class="u-align-center u-form-group u-form-submit">
                 <a href="#"
-                  class="u-black u-border-2 u-border-active-grey-40 u-border-grey-40 u-border-hover-grey-40 u-btn u-btn-submit u-button-style u-btn-2">Eliminar<br>
+                  class="u-black u-border-2 u-border-active-grey-40 u-border-grey-40 u-border-hover-grey-40 u-btn u-btn-submit u-button-style u-btn-2">Modificar<br>
                 </a>
                 <input type="submit" value="submit" class="u-form-control-hidden">
               </div>
-              <div class="u-form-send-message u-form-send-success"> 
-                Gracias! Tu mensaje ha sido enviado.
+              <div class="u-form-send-message u-form-send-success"> Gracias! Tu mensaje ha sido enviado.
               </div>
               <div class="u-form-send-error u-form-send-message"> No se puede enviar su mensaje. Por
                 favor, corrija los errores y vuelva a intentarlo. </div>
@@ -70,8 +68,7 @@
       </div>
     </div>
   </section>
-
-  @include('components.pageFooter')
+@include('components.pageFooter')
 </body>
 
 </html>

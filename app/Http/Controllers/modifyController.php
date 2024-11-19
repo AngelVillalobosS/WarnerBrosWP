@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class modifyController extends Controller
 {
     public function modifyClientView(){
-        return view('Catalogos.Clientes.modificarClientes');
+        return view('Catalogos.Clientes.modificarCliente');
     }
     
     public function modifyCategorieView(){
