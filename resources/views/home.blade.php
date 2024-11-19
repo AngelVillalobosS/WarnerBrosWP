@@ -65,13 +65,13 @@
                         data-product-id="6">
                         <div class="u-container-layout u-similar-container u-container-layout-1">
                             <!--product_image-->
-                            <a class="u-product-title-link" href="products/bettlejuice.html"><img
+                            <a class="u-product-title-link" href="{{ route('productoBeetlejuice') }}"><img
                                     src="{{ asset('../resources/images/beetlejuice2_poster.jpg') }}" alt=""
                                     class="u-expanded-width u-image u-image-default u-product-control u-image-1"></a>
                             <!--/product_image-->
                             <!--product_title-->
                             <h4 class="u-product-control u-text u-text-1">
-                                <a class="u-product-title-link" href="products/bettlejuice.html">Bettlejuice</a>
+                                <a class="u-product-title-link" href="{{ route('productoBeetlejuice') }}">Bettlejuice</a>
                             </h4>
                             <!--/product_title-->
                             <!--product_price-->
@@ -399,7 +399,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                     </div>
                 </div>
             </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-1"><svg class="u-svg-link"
-                    preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style="">
+                    preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-efe9"></use>
                 </svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                     xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-efe9">
@@ -550,5 +550,4 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
     }
     </style>
 </body>
-<!-- wasa -->
 </html>

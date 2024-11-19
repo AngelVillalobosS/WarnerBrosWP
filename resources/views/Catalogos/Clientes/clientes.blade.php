@@ -6,7 +6,7 @@
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <title>Catalogar Clientes</title>
-        @vite(['../resources/css/nicepage.css', '../resources/views/Catalogos/Clientes/clientes.css'])
+        @vite(['../resources/css/nicepage.css', '../resources/css/catalogos/clientes.css'])
         <script
             class="u-script"
             type="text/javascript"
@@ -55,7 +55,7 @@
             data-image-height="391"
         >
             <div class="u-clearfix u-sheet u-sheet-1">
-                <h2 class="u-text u-text-default u-text-1">Clientes</h2>
+                <h2 class="u-text u-text-default u-text-1">Cliente</h2>
                 <div class="u-expanded-width u-list u-list-1">
                     <div class="u-repeater u-repeater-1">
                         <div
@@ -75,7 +75,7 @@
                                     data-image-height="512"
                                 />
                                 <a
-                                    href="registrar_clientes.html"
+                                    href="{{ route('registrarCliente') }}"
                                     class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-1"
                                     >Registrar
                                 </a>
@@ -119,7 +119,7 @@
                                     data-image-height="512"
                                 />
                                 <a
-                                    href="eliminar_clientes.html"
+                                    href="{{ route('eliminarCliente') }}"
                                     class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-3"
                                     >Eliminar
                                 </a>
