@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['../resources/css/nicepage.css', '../resources/css/reportes/'])
     <title>reporteHistorialCompras</title>
 </head>
+
 <body>
     @include('components.pageHeader')
     <div>
@@ -13,6 +15,7 @@
     </div>
     @include('components.pageFooter')
 </body>
+
 </html>
 <h1>Reporte de Encuestas de Anime</h1>
 <br>

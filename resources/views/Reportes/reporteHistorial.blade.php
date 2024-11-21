@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>reporte_historial</title>
+    <title>WB | Historial Compras por Cliente</title>
     <link rel="stylesheet" href="../nicepage.css" media="screen">
     <link rel="stylesheet" href="reporte_historial.css" media="screen">
     @vite(['../resources/css/nicepage.css', '../resources/css/reportes/reporteHistorial.css'])
@@ -63,9 +63,7 @@
                                         class="u-grey-80 u-input u-input-rectangle u-input-1" required>
                                         @foreach($clientes as $client)
                                         <option value="{{ $client->id_cliente }}">
-                                            {{ $client->nombre_cliente }} {{ $client->ap_cliente }}
-                                            {{ $client->am_cliente }}
-                                        </option>
+                                            {{ $client->nombre_cliente }} {{ $client->ap_cliente }} {{ $client->am_cliente }}
                                         @endforeach
                                     </select>
                                     <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1"
@@ -77,9 +75,8 @@
                                 </div>
                             </div>
                             <div class="u-align-center u-form-group u-form-submit">
-                                <a href="#"
-                                    class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1">Enviar</a>
-                                <input type="submit" value="submit" class="u-form-control-hidden">
+                            <button type="submit"
+                                    class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1">Enviar</button>
                             </div>
                             <div class="u-form-send-message u-form-send-success"> Gracias! Tu mensaje ha sido enviado.
                             </div>
