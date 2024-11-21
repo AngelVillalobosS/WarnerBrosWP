@@ -64,6 +64,7 @@
                                         @foreach($clientes as $client)
                                         <option value="{{ $client->id_cliente }}">
                                             {{ $client->nombre_cliente }} {{ $client->ap_cliente }} {{ $client->am_cliente }}
+                                        </option>
                                         @endforeach
                                     </select>
                                     <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1"

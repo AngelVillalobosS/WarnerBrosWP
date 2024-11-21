@@ -11,7 +11,7 @@
 <body>
     @include('components.pageHeader')
     <div>
-        
+
     </div>
     @include('components.pageFooter')
 </body>
@@ -36,7 +36,7 @@
         <th scope='row'>Estudio</th scope='row'>
         <th scope='row'>Sugerencias</th scope='row'>
         <th scope='row'>Comentarios del Desarrollador</th scope='row'>
-    </tr>
+        </tr>
     @foreach($surveys as $s)
     <tr class='table-default'>
         <td>{{$s->id_survey}}</td>
@@ -54,7 +54,7 @@
         <td>{{$s->studio}}</td>
         <td>{{$s->suggestions}}</td>
         <td>{{$s->dev_comments}}</td>
-    </tr>
-    @endforeach
+        </tr>
+        @endforeach
 </table>
 @stop

@@ -32,5 +32,5 @@ class reportController extends Controller
 
         return view ('Reportes.reporte.reporteHistorialCompras')
             ->with($reporte);
-    }
+}
 }
