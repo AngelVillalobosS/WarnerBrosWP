@@ -90,7 +90,7 @@
                                 </li>
                                 <li class="u-nav-item"><a
                                         class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link"
-                                        href="Reportes/reporte_historial.html">Historial de compras</a>
+                                        href="{{ route('historialCommpras') }}">Historial de compras</a>
                                 </li>
                             </ul>
                         </div>

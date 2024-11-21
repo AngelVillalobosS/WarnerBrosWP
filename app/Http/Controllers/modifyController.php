@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class modifyController extends Controller
 {
-    public function modifyClientView(){
+    public function modifyClientView()
+    {
         return view('Catalogos.Clientes.modificarCliente');
     }
-    
-    public function modifyCategorieView(){
+
+    public function modifyCategorieView()
+    {
         // Code of Mireya
     }
 
-    public function modifyProductView(){
+    public function modifyProductView()
+    {
         // Code of Bryan
     }
 }
