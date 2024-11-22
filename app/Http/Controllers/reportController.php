@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\clientes;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
+use function PHPUnit\Framework\returnSelf;
+use function PHPUnit\Framework\returnValue;
 
 class reportController extends Controller
 {
@@ -21,16 +24,54 @@ class reportController extends Controller
             ->with('clientes', $clientes);
     }
 
-    public function reportHistorialComprasVista(Request $request){
-        $reporte = \DB::select("SELECT a.id_survey, a.name_per, a.a_pa, a.a_ma, a.year, a.sexo, a.happiness, 
-                               a.stars, a.requests, c.content AS content_name, cat.categorie AS category_name, 
-                               a.genre, a.studio, a.suggestions, a.dev_comments
-                        FROM anime_survey AS a
-                        INNER JOIN contents AS c ON c.id_content = a.id_content
-                        INNER JOIN categories AS cat ON cat.id_categorie = a.id_categorie
-                        WHERE a.stars > 0");
+    public function reportHistorialComprasVista(Request $request)
+    {
 
-        return view ('Reportes.reporte.reporteHistorialCompras')
-            ->with($reporte);
-}
+        // Validar las fechas
+        $request->validate([
+            'fecha_inicio' => 'required|date',
+            'fecha_fin' => 'required|date|after_or_equal:fecha_inicio',
+        ]);
+
+       /*  // Consulta a la base de datos
+        $reporte = \DB::connection('mysql') // Si usas SQLite; ajustar si es diferente
+            ->select(" SELECT 
+                v.id_venta,
+                CONCAT(c.nombre_cliente, ' ', c.ap_cliente, ' ', c.am_cliente) AS nombre_completo,
+                v.fecha_venta,
+                v.total
+            FROM 
+                ventas v
+            INNER JOIN 
+                clientes c ON v.id_cliente = c.id_cliente
+            WHERE 
+                v.fecha_venta BETWEEN :fecha_inicio AND :fecha_fin
+        ", [
+                'fecha_inicio' => $request->input('fecha_inicio'),
+                'fecha_fin' => $request->input('fecha_fin'),
+            ]); */
+
+        $reporte = \DB::connection('mysql') // Si usas SQLite; ajustar si es diferente
+            ->select(" SELECT 
+                v.id_venta,
+                CONCAT(c.nombre_cliente, ' ', c.ap_cliente, ' ', c.am_cliente) AS nombre_completo,
+                v.fecha_venta,
+                v.total
+            FROM 
+                ventas v
+            INNER JOIN 
+                clientes c ON v.id_cliente = c.id_cliente
+            WHERE 
+            v.id_cliente = :clientes AND
+                v.fecha_venta BETWEEN :fecha_inicio AND :fecha_fin
+        ", [
+                'clientes' => $request->input('clientes'),
+                'fecha_inicio' => $request->input('fecha_inicio'),
+                'fecha_fin' => $request->input('fecha_fin'),
+            ]);
+
+        // Retornar vista con los datos
+        return view('Reportes.reporte.reporteHistorialCompras')
+            ->with('reporte', $reporte);
+    }
 }
