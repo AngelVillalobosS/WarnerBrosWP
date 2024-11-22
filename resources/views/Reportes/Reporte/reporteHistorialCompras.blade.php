@@ -10,7 +10,7 @@
 
 <body>
     @include('components.pageHeader')
-        <div class="reporte-section">
+        <div class="reporte-section ">
             <div class="reporte-sheet">
                 <h1 class="reporte-title">Historial de Compras</h1>
                 <a href="{{ route('historialCommpras') }}"

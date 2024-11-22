@@ -82,7 +82,12 @@
                                         <option value="{{ $product->id_product }}">{{ $product->nom_producto }}</option>
                                         @endforeach
                                     </select>
-
+                                </div>
+                            </div>
+                            <div class="u-form-group u-form-select u-form-group-3">
+                                <label for="select-d405" class="u-label u-label-3">Cantidad:</label>
+                                <div class="u-form-select-wrapper">
+                                    <input type="text" name="cantidad" class="u-grey-80 u-input u-input-rectangle u-input-4" value="">
                                 </div>
                             </div>
                             <div class="u-form-group u-form-message u-form-group-4">
