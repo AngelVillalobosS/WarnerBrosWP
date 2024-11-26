@@ -10,7 +10,7 @@
 
     <!-- CSS y JS -->
     @vite(['../resources/css/nicepage.css', '../resources/css/catalogos/consultarCliente.css'])
-    @vite(['../resources/js/jquery.js', '../resources/js/nicepage.js'])
+    @vite(['../resources/js/nicepage.js'])
 
     <!-- Fuentes -->
     <link id="u-theme-google-font" rel="stylesheet"
@@ -28,7 +28,8 @@
 
             <!-- Botón Regresar -->
             <a href="{{ route('catalogoCliente') }}"
-            class="u-border-1 u-border-active-grey-40 u-border-black u-border-hover-black u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-1">Regresar </a>
+                class="u-border-1 u-border-active-grey-40 u-border-black u-border-hover-black u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-1">Regresar
+            </a>
 
             <!-- Contenedor principal -->
             <div class="u-align-center u-container-style u-group u-group-1">
@@ -38,15 +39,14 @@
                     <!-- Formulario de búsqueda -->
                     <div class="u-form u-form-1" id="search-form">
                         <form class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" name="form"
-                            style="padding: 10px;">
+                            style="padding: 10px;" action="{{ route('consultCliente') }}" method="GET">
                             <div class="u-form-group u-form-name">
-                                <label for="id_cliente" class="u-label u-text-black u-label-1">ID</label>
-                                <input type="text" placeholder="Introduzca el ID del cliente" id="id_cliente"
+                                <label for="id_cliente" class="u-label u-text-black u-label-1">Id</label>
+                                <input type="text" placeholder="Introduzca el ID del cliente" name="clientes"
                                     class="u-grey-80 u-input u-input-rectangle" required>
                             </div>
                             <div class="u-align-center u-form-group u-form-submit">
-                                <button type="button" id="consultar-btn"
-                                    class="u-black u-border-2 u-border-active-grey-40 u-border-grey-40 u-border-hover-grey-40 u-btn u-btn-submit u-button-style u-btn-2">
+                                <button type="submit" class="u-black u-border-2 u-border-active-grey-40 u-border-grey-40 u-border-hover-grey-40 u-btn u-btn-submit u-button-style u-btn-2">
                                     Consultar
                                 </button>
                             </div>
@@ -59,6 +59,7 @@
 
     <!-- Footer -->
     @include('components.pageFooter')
-    
+
 </body>
+
 </html>
