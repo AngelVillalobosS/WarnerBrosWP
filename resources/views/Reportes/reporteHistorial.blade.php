@@ -39,7 +39,7 @@
                 <div class="u-container-layout u-container-layout-1">
                     <h2 class="u-text u-text-default u-text-1">Historial de compras por clientes </h2>
                     <div class="u-form u-form-1">
-                      <!-- Formulario -->
+                        <!-- Formulario -->
                         <form action="{{ route('reportHistorialCompras') }}"
                             class="u-clearfix u-form-spacing-45 u-form-vertical u-inner-form" source="email" name="form"
                             style="padding: 10px;">
@@ -63,7 +63,8 @@
                                         class="u-grey-80 u-input u-input-rectangle u-input-1" required>
                                         @foreach($clientes as $client)
                                         <option value="{{ $client->id_cliente }}">
-                                            {{ $client->nombre_cliente }} {{ $client->ap_cliente }} {{ $client->am_cliente }}
+                                            {{ $client->nombre_cliente }} {{ $client->ap_cliente }}
+                                            {{ $client->am_cliente }}
                                         </option>
                                         @endforeach
                                     </select>
@@ -76,8 +77,9 @@
                                 </div>
                             </div>
                             <div class="u-align-center u-form-group u-form-submit">
-                            <button type="submit"
-                                    class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1">Enviar</button>
+                                <button type="submit"
+                                    class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1">Enviar
+                                </button>
                             </div>
                             <div class="u-form-send-message u-form-send-success"> Gracias! Tu mensaje ha sido enviado.
                             </div>

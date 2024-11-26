@@ -26,6 +26,7 @@ Route::get('catalogos/consultas/clientes', [consultController::class, 'consultCl
 
 // Eliminar
 Route::get('catalogos/eliminar/cliente', [deleteController::class, 'deleteClienteView'])->name('eliminarCliente');
+Route::post('catalogos/eiminar/deleteClient', [deleteController::class, 'deleteClient'])->name('deleteClient');
 
 // Modificar
 Route::get('catalogos/modificar/cliente', [modifyController::class, 'modifyClientView'])->name('modificarCliente');

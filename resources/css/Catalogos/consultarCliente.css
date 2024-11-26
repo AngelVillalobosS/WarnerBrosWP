@@ -14,7 +14,15 @@
   margin: 16px auto 0 16px;
   padding: 0;
 }
+#form-container {
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
 
+#form-container.show {
+  display: block;
+  opacity: 1;
+}
 .u-section-1 .u-group-1 {
   width: 610px;
   min-height: 327px;

@@ -14,7 +14,13 @@ class registerController extends Controller
     // Funciones para regresar las vistas
     public function registerClientView()
     {
-        return view('Catalogos.Clientes.registrarCliente');
+        $lastClient = \DB::select("SELECT id_cliente + 1 AS icCli FROM clientes ORDER BY id_cliente DESC LIMIT 1");
+
+        //Operador ternario para evitar que el dato salga como nulo si es que no hay registros en la BD
+        $nextId = !empty($lastClient) && isset($lastClient[0]->icCli) ? $lastClient[0]->icCli : 1;
+
+        return view('Catalogos.Clientes.registrarCliente')
+            ->with('nextId', $nextId);
     }
 
     public function registerCategorieView()
@@ -43,14 +49,20 @@ class registerController extends Controller
     }
 
     // Funciones para la funcionalidad
-    public function registerClient()
-    {
-        // Code of Angel
-    }
-
     public function saveClient(Request $request)
     {
-        return "Registro guardado";
+        $clientes = new clientes;
+        $clientes -> id_cliente = $request -> id_cliente;
+        $clientes -> nombre_cliente = $request -> nombre_cliente;
+        $clientes -> ap_cliente = $request -> ap_cliente;
+        $clientes -> am_cliente = $request -> am_cliente;
+        $clientes -> telefono = $request -> telefono;
+        $clientes -> correo = $request -> correo;
+        $clientes -> save();
+
+        Session::flash('mensaje', 'El cliente fue registrado correctamente');
+
+        return redirect()->route('registrarCliente');
     }
 
     public function saveDevolution(Request $request)
