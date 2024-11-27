@@ -41,12 +41,30 @@
                         <form class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" name="form"
                             style="padding: 10px;" action="{{ route('consultCliente') }}" method="GET">
                             <div class="u-form-group u-form-name">
-                                <label for="id_cliente" class="u-label u-text-black u-label-1">Id</label>
-                                <input type="text" placeholder="Introduzca el ID del cliente" name="clientes"
-                                    class="u-grey-80 u-input u-input-rectangle" required>
+                                <div class="u-form-select-wrapper">
+                                    <label for="select-822a" class="u-label u-label-3" style="font-style: oblique;">Id -
+                                        Cliente</label>
+                                    <select id="select-c607" name="clientes"
+                                        class="u-grey-80 u-input u-input-rectangle u-input-1" required>
+                                        @foreach($clientes as $client)
+                                        <option value="{{ $client->id_cliente }}">
+                                            {{$client->id_cliente}} - {{ $client->nombre_cliente }}
+                                            {{ $client->ap_cliente }}
+                                            {{ $client->am_cliente }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16"
+                                        style="fill:currentColor;" xml:space="preserve">
+                                        <polygon class="st0" points="8,12 2,4 14,4 "></polygon>
+                                    </svg>
+                                </div>
                             </div>
                             <div class="u-align-center u-form-group u-form-submit">
-                                <button type="submit" class="u-black u-border-2 u-border-active-grey-40 u-border-grey-40 u-border-hover-grey-40 u-btn u-btn-submit u-button-style u-btn-2">
+                                <button type="submit"
+                                    class="u-black u-border-2 u-border-active-grey-40 u-border-grey-40 u-border-hover-grey-40 u-btn u-btn-submit u-button-style u-btn-2">
                                     Consultar
                                 </button>
                             </div>

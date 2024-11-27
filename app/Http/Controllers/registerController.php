@@ -60,13 +60,29 @@ class registerController extends Controller
         $clientes -> correo = $request -> correo;
         $clientes -> save();
 
-        Session::flash('mensaje', 'El cliente fue registrado correctamente');
+        Session::flash('mensaje', 'El cliente se ha registrado correctamente');
 
         return redirect()->route('registrarCliente');
     }
 
     public function saveDevolution(Request $request)
     {
+        try {
+            $validatedData = $request->validate([
+                'id_cliente' => 'required|integer|max:11',
+                'nombre' => 'required|string|max:50',
+                'ap_cliente' => 'required|string|max:30',
+                'am_cliente' => 'required|string|max:30',
+                'telefono' => 'required|integer|max:10',
+                'email' => 'required|email',
+            ]);
+    
+            // Lógica adicional aquí
+    
+        } catch (\Exception $e) {
+            // Captura errores inesperados y muéstralos
+            dd($e->getMessage());
+        }
         // dd($request->productos);
         $devoluciones = new devoluciones;
         $devoluciones -> id_cliente = $request -> clientes;
@@ -75,7 +91,7 @@ class registerController extends Controller
         $devoluciones -> motivo = $request -> motivo;
         $devoluciones -> save();
         
-        Session::flash('mensaje', 'La devolución fue registrada correctamente.');
+        Session::flash('success', 'La devolución fue registrada correctamente.');
 
         // Redirige a la vista que quieres mostrar el mensaje
         return redirect()->route('registrarDevolucion');

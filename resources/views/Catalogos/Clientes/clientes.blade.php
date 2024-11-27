@@ -70,7 +70,7 @@
                                 <img
                                     class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1"
                                     src="{{ asset('../resources/images/88450.png') }}"
-                                    alt=""
+                                    alt="Imagen de un bloc de notas"
                                     data-image-width="512"
                                     data-image-height="512"
                                 />

@@ -4,19 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\clientes;
-use DB;
 
 class consultController extends Controller
 {
     // Regresar Vistas
     public function consultClientView(Request $request)
     {
-        $lastId = \DB::select("SELECT id_cliente + 1 AS icCli FROM clientes ORDER BY id_cliente DESC LIMIT 1");
-        // $cliente = Clientes::find($request->id_cliente);
+        /* $lastId = \DB::select("SELECT id_cliente + 1 AS icCli FROM clientes ORDER BY id_cliente DESC LIMIT 1");
+        $cliente = Clientes::find($request->id_cliente);
         $nombre = Clientes::find($request->nombre);
         return view('Catalogos.Clientes.consultarCliente')
             ->with('nombre_cliente', $nombre)
-            ->with('nextId', $lastId);
+            ->with('nextId', $lastId); */
+
+            /* $clientes = clientes::orderby('id_cliente', 'asc')->get();
+        return view('Catalogos.Clientes.consultarCliente')
+            ->with('clientes', $clientes); */
+
+            // dd($request->all());
+        // Obtener el ID del cliente desde el formulario
+        // Consultar cliente en la base de datos
+        $reporte = \DB::connection('mysql')
+            ->select("SELECT id_cliente, CONCAT(nombre_cliente, ' ', ap_cliente, ' ', am_cliente) AS nombre_completo, telefono, correo
+                      FROM clientes 
+                      ");
+
+        // Si el cliente es encontrado, retornar la vista con los datos
+        return view('Catalogos.Clientes.consultaCliente')
+            ->with('reporte', $reporte);
     }
 
     public function wasa(Request $request)

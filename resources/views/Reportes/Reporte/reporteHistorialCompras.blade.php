@@ -12,26 +12,26 @@
     @include('components.pageHeader')
         <div class="reporte-section ">
             <div class="reporte-sheet">
-                <h1 class="reporte-title">Historial de Compras</h1>
+                <h2 class="reporte-title">Historial de Compras</h2>
                 <a href="{{ route('historialCommpras') }}"
                 class="u-border-1 u-border-active-grey-40 u-border-black u-border-hover-black u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-1">Regresar
                 </a>
                 <table class="reporte-table">
                     <thead>
                         <tr>
-                            <th>ID Venta</th>
-                            <th>Nombre Completo</th>
-                            <th>Fecha de Venta</th>
+                            <th>ID Cliente</th>
+                            <th>Cliente</th>
+                            <th>Cantidad de Compras</th>
                             <th>Total de Compra</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($reporte as $item)
                         <tr>
-                            <td>{{ $item->id_venta }}</td>
+                            <td>{{ $item->id_cliente }}</td>
                             <td>{{ $item->nombre_completo }}</td>
-                            <td>{{ $item->fecha_venta }}</td>
-                            <td>${{ number_format($item->total, 2) }}</td>
+                            <td>{{ $item->cantidad_ventas }}</td>
+                            <td>${{ number_format($item->total_acumulado, 2) }}</td>
                         </tr>
                         @endforeach
                     </tbody>

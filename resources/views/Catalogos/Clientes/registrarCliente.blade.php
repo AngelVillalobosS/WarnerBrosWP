@@ -42,12 +42,9 @@
                 data-animation-duration="1000" data-animation-delay="0">
                 <div class="u-container-layout">
                     <h2 class="u-text u-text-default u-text-1">Registrar Clientes </h2>
-                    @if (Session::has('mensaje'))
-                    <div>
-                        <div class="alert alert-dismissible alert-success">
-                            <br>
-                            <strong>{{ Session::get('mensaje') }}</strong>
-                        </div>
+                    @if (Session('success'))
+                    <div id="flash-message" class="alert alert-success">
+                        {{ Session('success') }}
                     </div>
                     @endif
                     <div class="u-form u-form-1">
@@ -100,5 +97,16 @@
     </section>
     @include('components.pageFooter')
 </body>
+<script>
+// Esperar 5 segundos y luego ocultar el mensaje
+setTimeout(() => {
+    const flashMessage = document.getElementById('flash-message');
+    if (flashMessage) {
+        flashMessage.style.transition = 'opacity 0.5s ease-out';
+        flashMessage.style.opacity = '0';
+        setTimeout(() => flashMessage.remove(), 500); // Eliminar el elemento después de que desaparezca
+    }
+}, 5000); // Tiempo en milisegundos (5 segundos)
+</script>
 
 </html>

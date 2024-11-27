@@ -12,8 +12,8 @@
     @include('components.pageHeader')
         <div class="reporte-section ">
             <div class="reporte-sheet">
-                <h1 class="reporte-title">Consulta Cliente</h1>
-                <a href="{{ route('consultarCliente') }}"
+                <h2 class="reporte-title">Clientes registrados</h2>
+                <a href="{{ route('catalogoCliente') }}"
                 class="u-border-1 u-border-active-grey-40 u-border-black u-border-hover-black u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-1">Regresar
                 </a>
                 <table class="reporte-table">
