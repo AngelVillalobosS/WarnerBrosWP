@@ -35,73 +35,43 @@
             <div class="u-container-style u-group u-group-1" data-animation-name="customAnimationIn"
                 data-animation-duration="1000" data-animation-delay="0">
                 <div class="u-container-layout">
-                    <h2 class="u-text u-text-default u-text-1">Devoluciones<br>
-                    </h2>
-                    @if (Session::has('mensaje'))
-                        <div>
-                            <div class="alert alert-dismissible alert-success">
-                                <strong></strong> {{ Session::get('mensaje') }}
-                            </div>
-                        </div>
-                        @endif
-                    <div class="u-form u-form-1">
+                <h1>Modificar Devoluciones para Cliente ID: {{ $id_cliente }}</h1>
 
-                        <!-- Formulario -->
-                        <form action="{{ route('saveDevolucion') }}" method="POST"
-                            class="u-clearfix u-form-spacing-45 u-form-vertical u-inner-form" style="padding: 10px;">
-                            @csrf
-                            <div class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-1">
-                                <label for="select-c607" class="u-label u-label-1">Seleccionar cliente</label>
-                                <div class="u-form-select-wrapper">
-                                    <select name="clientes" class="u-grey-80 u-input u-input-rectangle u-input-1"
-                                        required>
-                                        @foreach($clientes as $client)
-                                        <option value="{{ $client->id_cliente }}">
-                                            {{ $client->nombre_cliente }} {{ $client->ap_cliente }}
-                                            {{ $client->am_cliente }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-2">
-                                <label for="date-65bb" class="u-label u-label-2">Fecha</label>
-                                @if($errors->first('fecha'))
-                                <p class="text-warning">{{$errors->first('fecha')}}</p>
-                                @endif
-                                <input type="date" id="date-65bb" name="fecha"
-                                    class="u-grey-80 u-input u-input-rectangle u-input-2" value="{{ old('fecha') }}"
-                                    required>
-                            </div>
-                            <div class="u-form-group u-form-select u-form-group-3">
-                                <label for="select-d405" class="u-label u-label-3">Seleccionar producto</label>
-                                <div class="u-form-select-wrapper">
-                                    <select name="productos" class="u-grey-80 u-input u-input-rectangle u-input-3"
-                                        required>
-                                        @foreach($productos as $product)
-                                        <option value="{{ $product->id_product }}">{{ $product->nom_producto }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="u-form-group u-form-select u-form-group-3">
-                                <label for="select-d405" class="u-label u-label-3">Cantidad:</label>
-                                <div class="u-form-select-wrapper">
-                                    <input type="text" name="cantidad" class="u-grey-80 u-input u-input-rectangle u-input-4" value="">
-                                </div>
-                            </div>
-                            <div class="u-form-group u-form-message u-form-group-4">
-                                <label for="text-2ca3" class="u-label u-label-4">Motivo de la devolución</label>
-                                <textarea id="text-2ca3" name="motivo"
-                                    class="u-grey-80 u-input u-input-rectangle u-input-4"
-                                    required>{{ old('motivo') }}</textarea>
-                            </div>
-                            <div class="u-align-center u-form-group u-form-submit">
-                                <button type="submit"
-                                    class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1">Registrar
-                                    devolución</button>
-                            </div>
-                        </form>
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+<form action="{{ route('devoluciones.update') }}" method="POST">
+    @csrf
+    <input type="hidden" name="id_cliente" value="{{ $id_cliente }}">
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID Venta</th>
+                <th>Fecha</th>
+                <th>Cantidad Devuelta</th>
+                <th>Modificar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($ventas as $venta)
+                <tr>
+                    <td>{{ $venta->id_venta }}</td>
+                    <td>{{ $venta->fecha }}</td>
+                    <td>
+                        <input type="number" name="nueva_cantidad" value="{{ $venta->cantidad_devuelta }}" min="0">
+                    </td>
+                    <td>
+                        <button type="submit" name="id_venta" value="{{ $venta->id_venta }}">Actualizar</button>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</form>
                     </div>
                 </div>
             </div>

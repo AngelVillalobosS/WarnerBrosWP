@@ -33,10 +33,34 @@
                 data-animation-duration="1000" data-animation-delay="0">
                 <div class="u-container-layout">
                     <h2 class="u-text u-text-default u-text-1">Registrar Clientes </h2>
-                    @if (Session('success'))
-                    <div id="flash-message" class="alert alert-success">
-                        {{ Session('success') }}
-                    </div>
+                    @if(session('mensaje'))
+                        <div id="modalMensaje" style="
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(0, 0, 0, 0.5);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            z-index: 1000;">
+                            <div style="
+                                background: white;
+                                padding: 20px;
+                                border-radius: 10px;
+                                text-align: center;
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                                <p>{{ session('mensaje') }}</p>
+                                <button onclick="cerrarModal()" style="
+                                    background: black;
+                                    color: white;
+                                    border: none;
+                                    padding: 10px 20px;
+                                    border-radius: 5px;
+                                    cursor: pointer;">Cerrar</button>
+                            </div>
+                        </div>
                     @endif
                     <div class="u-form u-form-1">
                         <!-- Registrar Clientes -->
@@ -99,5 +123,10 @@ setTimeout(() => {
     }
 }, 5000); // Tiempo en milisegundos (5 segundos)
 </script>
-
+<script>
+        function cerrarModal() {
+            const modal = document.getElementById('modalMensaje');
+            modal.style.display = 'none';
+        }
+</script>
 </html>

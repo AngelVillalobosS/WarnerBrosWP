@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\clientes;
 use App\Models\devoluciones;
 use App\Models\productos;
+use App\Models\detalles_ventas;
 
 use Illuminate\Support\Facades\Session;
 
@@ -96,6 +97,36 @@ class registerController extends Controller
         // Redirige a la vista que quieres mostrar el mensaje
         return redirect()->route('registrarDevolucion');
 
+    }
+    
+    public function showDevolucionesForm($id_cliente)
+    {
+        // Obtener todas las ventas del cliente con sus devoluciones
+        $ventas = detalles_ventas::where('id_cliente', $id_cliente)->get();
+
+        // Retornar vista con los datos del cliente y sus ventas
+        return view('devoluciones.modificar', compact('ventas', 'id_cliente'));
+    }
+
+    public function updateDevoluciones(Request $request)
+    {
+        // Validar los datos
+        $request->validate([
+            'id_venta' => 'required|exists:detalles_ventas,id_venta',
+            'nueva_cantidad' => 'required|integer|min:0',
+            'fecha' => 'required|date',
+        ]);
+
+        // Actualizar la cantidad devuelta
+        $venta = detalles_ventas::where('id_venta', $request->id_venta)
+                              ->where('id_cliente', $request->id_cliente)
+                              ->where('fecha', $request->fecha)
+                              ->firstOrFail();
+
+        $venta->cantidad_devuelta = $request->nueva_cantidad;
+        $venta->save();
+
+        return redirect()->back()->with('success', 'Cantidad de devoluciones actualizada correctamente.');
     }
 
     public function registerCategorie()
