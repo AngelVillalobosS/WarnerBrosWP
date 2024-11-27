@@ -34,7 +34,7 @@
                             <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
                                 <li class="u-nav-item"><a
                                         class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link"
-                                        href="Registros/registrar_alquileres.html">Renta de productos</a>
+                                        href="#">Renta de productos</a>
                                 </li>
                                 <li class="u-nav-item"><a
                                         class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link"
@@ -90,7 +90,7 @@
                                 </li>
                                 <li class="u-nav-item"><a
                                         class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link"
-                                        href="Reportes/reporte_historial.html">Historial de compras</a>
+                                        href="{{ route('historialCommpras') }}">Historial de compras</a>
                                 </li>
                             </ul>
                         </div>

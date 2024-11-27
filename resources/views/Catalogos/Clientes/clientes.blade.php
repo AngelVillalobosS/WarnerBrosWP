@@ -70,7 +70,7 @@
                                 <img
                                     class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1"
                                     src="{{ asset('../resources/images/88450.png') }}"
-                                    alt=""
+                                    alt="Imagen de un bloc de notas"
                                     data-image-width="512"
                                     data-image-height="512"
                                 />
@@ -97,7 +97,7 @@
                                     data-image-height="512"
                                 />
                                 <a
-                                    href="modificar_clientes.html"
+                                    href="{{ route('modificarCliente') }}"
                                     class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-2"
                                     >Modificar
                                 </a>
@@ -141,7 +141,7 @@
                                     data-image-height="512"
                                 />
                                 <a
-                                    href="consultar_clientes.html"
+                                    href="{{ route('consultarCliente') }}"
                                     class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-4"
                                     >Consultar
                                 </a>
