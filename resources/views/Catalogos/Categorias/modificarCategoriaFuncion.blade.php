@@ -31,7 +31,7 @@
                     @endif
                     
                     <div class="u-form u-form-1">
-                    <form action="{{ route('modificarCatFunc') }}" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px;">
+                    <form action="{{ route('updateCategorie') }}" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px;">
                             {{ csrf_field() }}
                             <div class="u-form-group">
                                 <label for="name-29e0" class="u-label u-text-black u-label-1">ID</label>
@@ -42,7 +42,7 @@
                                 <input type="text" placeholder="Introduzca el nombre de la categoría" id="email-29e0" name="nom_categoria" class="u-grey-75 u-input u-input-rectangle" required="required" value="{{ $nombre_categoria }}">
                             </div>
                             <div class="u-align-center u-form-group u-form-submit">
-                                <button type="submit" class="u-black u-border-2 u-border-active-grey-40 u-border-grey-40 u-border-hover-grey-40 u-btn u-btn-submit u-button-style u-btn-2">Registrar</button>
+                                <button type="submit" class="u-black u-border-2 u-border-active-grey-40 u-border-grey-40 u-border-hover-grey-40 u-btn u-btn-submit u-button-style u-btn-2">Modificar categoría</button>
                             </div>
                         </form>
                     </div>

@@ -18,7 +18,7 @@
 
   <section class="u-clearfix u-image u-section-1" id="sec-7822" data-image-width="626" data-image-height="391">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <a href="{{ route('catalogoCategoria') }}" class="u-border-1 u-border-active-grey-40 u-border-black u-border-hover-black u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-1">Regresar </a>
+      <a href="{{ route('consultarCategoria') }}" class="u-border-1 u-border-active-grey-40 u-border-black u-border-hover-black u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-1">Regresar </a>
 
       <!-- Mostrar mensaje de error si no se encuentra la categoría -->
       @if(session('error'))
@@ -37,8 +37,8 @@
           <tbody>
             @foreach($categorias as $categoria)
               <tr>
-                <td style="border: 1px solid #ddd; padding: 8px;">{{ $categoria->id_categoria}}</td>
-                <td style="border: 1px solid #ddd; padding: 8px;">{{ $categoria->nom_categoria }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ $categoria->id }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ $categoria->nombre }}</td>
               </tr>
             @endforeach
           </tbody>

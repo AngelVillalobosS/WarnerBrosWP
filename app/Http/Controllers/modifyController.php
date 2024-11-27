@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Categorias;
 use Illuminate\Http\Request;
-
+use Session;
 class modifyController extends Controller
 {
     public function modifyClientView(){
@@ -11,7 +11,9 @@ class modifyController extends Controller
     }
     
     public function modifyCategorieView(){
-        return view('Catalogos.Categorias.modificarCategoria');
+        $categorias = categorias::orderby('nom_categoria','asc')
+	                                  ->get();
+        return view('Catalogos.Categorias.modificarCategoria')->with('categorias',$categorias);
     }
 
     public function modifyProductView(){
@@ -36,4 +38,32 @@ class modifyController extends Controller
             'nombre_categoria' => $categoria->nom_categoria
         ]);
     }
+   
+   // Método para manejar la actualización del nombre de la categoría
+   public function updateCategorie(Request $request)
+{
+    // Obtener los datos del formulario
+    $id_categoria = $request->input('id_categoria');
+    $nuevo_nombre = $request->input('nom_categoria');
+    
+    // Buscar la categoría en la base de datos
+    $categoria = Categorias::find($id_categoria);
+
+    // Si la categoría no existe, redirigir con un mensaje de error
+    if (!$categoria) {
+        Session::flash('error', 'Categoría no encontrada');
+        return redirect()->route('modificarCategoria');
+    }
+
+    // Actualizar el nombre de la categoría
+    $categoria->nom_categoria = $nuevo_nombre;
+    $categoria->save();
+
+    // Usar Session::flash para guardar el mensaje temporalmente
+    Session::flash('mensaje', "La categoría con nombre '{$nuevo_nombre}' se ha actualizado exitosamente.");
+
+    // Redirigir con un mensaje de éxito
+    return redirect()->route('modificarCategoria');
+}
+
 }

@@ -1,125 +1,105 @@
- .u-section-1 {
+.u-section-1 {
   background-image: url("https://img.freepik.com/vector-premium/marmol-abstracto-textura-fondo-blanco-negro_100956-254.jpg");
   background-position: 50% 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Centrado vertical */
+  margin: 0; /* Asegurar que no haya márgenes externos */
 }
 
 .u-section-1 .u-sheet-1 {
-  min-height: 591px;
+  width: 100%;
+  max-width: 1200px; /* Aumentar el ancho máximo */
+  min-height: auto;
+  padding: 20px; /* Reducir padding */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 4px 10px rgba(6, 6, 6, 0.2); /* Sombra para destacar */
 }
 
 .u-section-1 .u-group-1 {
-  width: 969px;
-  min-height: 382px;
+  width: 100%;
   height: auto;
-  --animation-custom_in-translate_x: 0px;
-  --animation-custom_in-translate_y: 300px;
-  --animation-custom_in-opacity: 0;
-  --animation-custom_in-rotate: 0deg;
-  --animation-custom_in-scale: 1;
-  margin: 60px auto;
+  margin: 0 auto; /* Centrado horizontal */
 }
 
 .u-section-1 .u-text-1 {
   font-weight: 700;
-  margin: 20px auto 0 20px;
+  text-align: center; /* Centrar el título */
+  color: black;
+  margin: 10px 0; /* Reducir márgenes */
 }
 
 .u-section-1 .u-form-1 {
-  height: 253px;
-  margin: 36px auto 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Reducir espacio entre elementos */
+  margin: 0 auto;
 }
 
-.u-section-1 .u-form-group-1 {
-  margin-left: 0;
+.u-section-1 .u-form-group {
+  display: flex;
+  flex-direction: column;
 }
 
-.u-section-1 .u-label-1 {
-  font-weight: 700;
-}
-
-.u-section-1 .u-input-1 {
-  background-image: none;
-}
-
-.u-section-1 .u-form-group-2 {
-  margin-left: 0;
-}
-
-.u-section-1 .u-label-2 {
-  font-weight: 700;
-}
-
-.u-section-1 .u-input-2 {
-  background-image: none;
-}
-
-.u-section-1 .u-form-group-3 {
-  margin-left: 0;
-}
-
-.u-section-1 .u-label-3 {
-  font-weight: 700;
-}
-
-.u-section-1 .u-input-3 {
-  background-image: none;
-}
-
-.u-section-1 .u-form-group-4 {
-  margin-left: 0;
-}
-
+.u-section-1 .u-label-1, 
+.u-section-1 .u-label-2, 
+.u-section-1 .u-label-3, 
 .u-section-1 .u-label-4 {
   font-weight: 700;
+  color: black;
+  margin-bottom: 5px;
 }
 
+.u-section-1 .u-input-1, 
+.u-section-1 .u-input-2, 
+.u-section-1 .u-input-3, 
 .u-section-1 .u-input-4 {
-  background-image: none;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  background-color: white; /* Fondo blanco */
+  color: black;
 }
 
 .u-section-1 .u-btn-1 {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-image: none;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.u-section-1 .u-btn-1:hover {
+  background-color: #333; /* Oscurecer al pasar el mouse */
 }
 
 @media (max-width: 1199px) {
   .u-section-1 .u-sheet-1 {
-    min-height: 487px;
-  }
-
-  .u-section-1 .u-group-1 {
-    width: 940px;
-    height: auto;
+    max-width: 1000px; /* Ajuste para pantallas medianas */
   }
 }
 
 @media (max-width: 991px) {
   .u-section-1 .u-sheet-1 {
-    min-height: 373px;
-  }
-
-  .u-section-1 .u-group-1 {
-    width: 720px;
+    max-width: 850px; /* Ajuste para pantallas más pequeñas */
   }
 }
 
 @media (max-width: 767px) {
   .u-section-1 .u-sheet-1 {
-    min-height: 280px;
-  }
-
-  .u-section-1 .u-group-1 {
-    width: 540px;
+    max-width: 600px; /* Ajuste para pantallas más pequeñas */
   }
 }
 
 @media (max-width: 575px) {
   .u-section-1 .u-sheet-1 {
-    min-height: 176px;
-  }
-
-  .u-section-1 .u-group-1 {
-    width: 340px;
+    max-width: 400px; /* Ajuste para pantallas muy pequeñas */
   }
 }

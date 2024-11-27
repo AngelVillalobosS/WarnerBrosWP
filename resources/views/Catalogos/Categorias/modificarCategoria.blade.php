@@ -45,13 +45,50 @@
         <div class="u-align-center u-container-style u-group u-group-1" data-animation-name="customAnimationIn" data-animation-duration="1000" data-animation-delay="0">
           <div class="u-container-layout">
             <h2 class="u-text u-text-default u-text-1">Modificar Categorías </h2>
+          
+                    <!-- Mostrar mensaje de sesión como modal -->
+                    @if(session('mensaje'))
+                        <div id="modalMensaje" style="
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(0, 0, 0, 0.5);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            z-index: 1000;">
+                            <div style="
+                                background: white;
+                                padding: 20px;
+                                border-radius: 10px;
+                                text-align: center;
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                                <p>{{ session('mensaje') }}</p>
+                                <button onclick="cerrarModal()" style="
+                                    background: black;
+                                    color: white;
+                                    border: none;
+                                    padding: 10px 20px;
+                                    border-radius: 5px;
+                                    cursor: pointer;">Cerrar</button>
+                            </div>
+                        </div>
+                    @endif
             <div class="u-form u-form-1">
             <form action="{{ route('modificarCatFunc') }}" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px;">
                 @csrf
                 <div class="u-form-group u-form-name">
-                    <label for="name-29e0" class="u-label u-text-black u-label-1">ID</label>
-                    <input type="text" placeholder="Introduzca el ID de la Categoría" id="name-29e0" name="id_categoria" class="u-grey-80 u-input u-input-rectangle" required="">
-                </div>
+                                <label for="id_categoria" class="u-label u-text-black u-label-1">Seleccione Categoría</label>
+                                <select class="form-select u-grey-80 u-input u-input-rectangle" name="id_categoria" id="id_categoria" required>
+                                    <option value="" style="background-color: rgba(255, 255, 255, 0.8); color: #000;">Seleccione una categoría</option>
+
+                                    @foreach ($categorias as $categoria)
+                                        <option value="{{ $categoria->id_categoria }}">{{ $categoria->id_categoria }} - {{ $categoria->nom_categoria }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                 <div class="u-align-center u-form-group u-form-submit">
                     <button type="submit" class="u-black u-border-2 u-border-active-grey-40 u-border-grey-40 u-border-hover-grey-40 u-btn u-btn-submit u-button-style u-btn-2">Modificar</button>
                 </div>
@@ -61,7 +98,13 @@
         </div>
       </div>
     </section>
-    
+    <!-- Script para cerrar el modal -->
+    <script>
+        function cerrarModal() {
+            const modal = document.getElementById('modalMensaje');
+            modal.style.display = 'none';
+        }
+    </script>
     
     
     

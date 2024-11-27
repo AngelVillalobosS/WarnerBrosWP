@@ -23,15 +23,20 @@ Route::get('catalogos/categorias',[catalogosController::class, 'catCategoriasVie
 // Consultas
 Route::get('catalogos/consultas/clientes',[consultController::class, 'consulClientView'])->name('consultarCliente');
 Route::get('catalogos/consultas/categorias',[consultController::class, 'consultCategorieView'])->name('consultarCategoria');
+Route::post('catalogos/consultas/categorias/funtion',[consultController::class, 'consultCategorieFun'])->name('consultCategorieFun');
     // Route of Bryan
 
 // Eliminar
 Route::get('catalogos/eliminar/cliente', [deleteController::class, 'deleteClienteView'])->name('eliminarCliente');
 Route::get('catalogos/eliminar/categoria', [deleteController::class, 'deleteCategoriaView'])->name('eliminarCategoria');
+Route::post('catalogos/eliminar/categoria/delete', [deleteController::class, 'deleteCategoria'])->name('deleteCategoria');
 
 // Modificar
 Route::get('catalogos/modificar/categoria', [modifyController::class, 'modifyCategorieView'])->name('modificarCategoria');
 Route::post('catalogos/modificar/categoria/funcion', [modifyController::class, 'modifyCatFunctView'])->name('modificarCatFunc');
+Route::post('catalogos/modificar/categoria/funcion/update', [modifyController::class, 'updateCategorie'])->name('updateCategorie');
+
+
 
 
 // Productos
@@ -43,7 +48,9 @@ Route::get('registrar/devolucion',[registerController::class, 'registerDevolutio
 Route::get('registrar/venta',[registerController::class, 'registerVentaView'])->name('registrarVenta');
 Route::get('catalogos/registrar/categoria',[registerController::class, 'registerCategorieView'])->name('registrarCategoria');
 Route::POST('catalogos/registrar/categoria',[registerController::class, 'registerCategorie'])->name('registerCategorie');
+Route::POST('catalogos/registrar/venta',[registerController::class, 'registerVenta'])->name('registerVenta');
     // Route of Bryan
 
 // Reportes
 Route::get('/contenido-mas-vendido', [reportController::class, 'reportContMasVendidoView'])->name('ContenidoMasVendido');
+Route::get('/contenido-mas-vendido/contenido', [reportController::class, 'reportContMasVendido'])->name('reportContMasVendido');

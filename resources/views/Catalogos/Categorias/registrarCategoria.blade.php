@@ -23,10 +23,34 @@
                 <div class="u-container-layout">
                     <h2 class="u-text u-text-default u-text-1">Registrar Categorías </h2>
                     
-                    <!-- Mostrar mensaje de sesión aquí -->
+                    <!-- Mostrar mensaje de sesión como modal -->
                     @if(session('mensaje'))
-                        <div class="u-alert u-alert-success" role="alert">
-                            {{ session('mensaje') }}
+                        <div id="modalMensaje" style="
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(0, 0, 0, 0.5);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            z-index: 1000;">
+                            <div style="
+                                background: white;
+                                padding: 20px;
+                                border-radius: 10px;
+                                text-align: center;
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                                <p>{{ session('mensaje') }}</p>
+                                <button onclick="cerrarModal()" style="
+                                    background: black;
+                                    color: white;
+                                    border: none;
+                                    padding: 10px 20px;
+                                    border-radius: 5px;
+                                    cursor: pointer;">Cerrar</button>
+                            </div>
                         </div>
                     @endif
                     
@@ -39,8 +63,9 @@
                             </div>
                             <div class="u-form-group">
                                 <label for="email-29e0" class="u-label u-text-black u-label-2">Nombre</label>
-                                <input type="text" placeholder="Introduzca el nombre de la categoría" id="email-29e0" name="nom_categoria" class="u-grey-75 u-input u-input-rectangle" required="required">
+                                <input type="text" placeholder="Introduzca el nombre de la categoría" id="email-29e0" name="nom_categoria" class="u-grey-75 u-input u-input-rectangle" required="required" maxlength="50">
                             </div>
+
                             <div class="u-align-center u-form-group u-form-submit">
                                 <button type="submit" class="u-black u-border-2 u-border-active-grey-40 u-border-grey-40 u-border-hover-grey-40 u-btn u-btn-submit u-button-style u-btn-2">Registrar</button>
                             </div>
@@ -50,6 +75,14 @@
             </div>
         </div>
     </section>
-    @include('components.pageFooter')  
+    @include('components.pageFooter')
+
+    <!-- Script para cerrar el modal -->
+    <script>
+        function cerrarModal() {
+            const modal = document.getElementById('modalMensaje');
+            modal.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
