@@ -42,11 +42,32 @@
                 data-animation-duration="1000" data-animation-delay="0">
                 <div class="u-container-layout">
                     <h2 class="u-text u-text-default u-text-1">Eliminar Clientes </h2>
-                    @if (Session::has('mensaje'))
-                    <div>
-                        <div class="alert alert-dismissible alert-success">
-                            <br>
-                            <strong>{{ Session::get('mensaje') }}</strong>
+                    @if(session('mensaje'))
+                    <div id="modalMensaje" style="
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.5);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 1000;">
+                                        <div style="
+                            background: white;
+                            padding: 20px;
+                            border-radius: 10px;
+                            text-align: center;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                                            <p>{{ session('mensaje') }}</p>
+                                            <button onclick="cerrarModal()" style="
+                                background: black;
+                                color: white;
+                                border: none;
+                                padding: 10px 20px;
+                                border-radius: 5px;
+                                cursor: pointer;">Cerrar</button>
                         </div>
                     </div>
                     @endif
@@ -56,7 +77,7 @@
                             style="padding: 10px;" method="POST">
                             @csrf
                             <div class="u-form-group u-form-name">
-                            <div class="u-form-select-wrapper">
+                                <div class="u-form-select-wrapper">
                                     <label for="select-822a" class="u-label u-label-3" style="font-style: oblique;">Id -
                                         Cliente</label>
                                     <select id="select-c607" name="clientes"
@@ -78,7 +99,8 @@
                                 </div>
                             </div>
                             <div class="u-align-center u-form-group u-form-submit">
-                                <input type="submit" value="Eliminar" class="u-black u-border-2 u-border-active-grey-40 u-border-grey-40 u-border-hover-grey-40 u-btn u-btn-submit u-button-style u-btn-2" >
+                                <input type="submit" value="Eliminar"
+                                    class="u-black u-border-2 u-border-active-grey-40 u-border-grey-40 u-border-hover-grey-40 u-btn u-btn-submit u-button-style u-btn-2">
                             </div>
                             <div class="u-form-send-message u-form-send-success">
                                 Gracias! Tu mensaje ha sido enviado.
@@ -96,5 +118,10 @@
 
     @include('components.pageFooter')
 </body>
-
+<script>
+        function cerrarModal() {
+            const modal = document.getElementById('modalMensaje');
+            modal.style.display = 'none';
+        }
+</script>
 </html>

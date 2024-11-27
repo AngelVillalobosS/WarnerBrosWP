@@ -31,6 +31,9 @@ Route::post('catalogos/eiminar/deleteClient', [deleteController::class, 'deleteC
 
 // Modificar
 Route::get('catalogos/modificar/cliente', [modifyController::class, 'modifyClientView'])->name('modificarCliente');
+Route::get('/clientes/modificar/datos', [modifyController::class, 'showModifyClientForm'])->name('modifyCliente');
+Route::post('/clientes/modificar', [modifyController::class, 'updateClient'])->name('actualizarCliente');
+
 // Productos
 Route::get('productos/beetlejuice', [productController::class, 'productBeetlejuiceView'])->name('productoBeetlejuice');
 
