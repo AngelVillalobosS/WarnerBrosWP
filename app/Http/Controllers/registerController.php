@@ -7,10 +7,7 @@ use App\Models\Clientes;
 use App\Models\Ventas;
 use App\Models\Detalles_Ventas;
 use Illuminate\Http\Request;
-use App\Models\clientes;
 use App\Models\devoluciones;
-use App\Models\productos;
-use App\Models\detalles_ventas;
 
 use Illuminate\Support\Facades\Session;
 
