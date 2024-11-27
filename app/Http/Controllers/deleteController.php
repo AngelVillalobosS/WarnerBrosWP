@@ -31,7 +31,7 @@ class deleteController extends Controller
                 session()->flash('mensaje', "No se puede eliminar al cliente con id '{$idCliente}', porque está asociado a una venta.");
             } else {
                 // Delete Client
-                DB::table('categorias')->where('id_cliente', $idCliente)->delete();
+                DB::table('clientes')->where('id_cliente', $idCliente)->delete();
                 //Success Messagge
                 session()->flash('mensaje', 'El Cliente fue eliminado correctamente');
             }
