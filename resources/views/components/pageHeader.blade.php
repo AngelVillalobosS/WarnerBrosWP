@@ -42,7 +42,7 @@
                                 </li>
                                 <li class="u-nav-item"><a
                                         class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link"
-                                        href="{{ route('registrarDevolucion') }}">Devoluciones</a>
+                                        href="{{ route('devoluciones.form') }}">Devoluciones</a>
                                 </li>
                                 <li class="u-nav-item"><a
                                         class="u-active-grey-40 u-black u-button-style u-hover-grey-40 u-nav-link"

@@ -42,7 +42,7 @@ Route::get('catalogos/registrar/cliente', [registerController::class, 'registerC
 Route::get('registrar/devolucion', [registerController::class, 'registerDevolutionView'])->name('registrarDevolucion');
 Route::post('registar/guardar-cliente', [registerController::class, 'saveClient'])->name('saveCliente');
 Route::post('registrar/guardar-devolucion', [registerController::class, 'saveDevolution'])->name('saveDevolucion');
-Route::get('/devoluciones/{id_cliente}', [registerController::class, 'showDevolucionesForm'])->name('devoluciones.form');
+Route::get('/devoluciones/registrar', [registerController::class, 'showDevolucionesForm'])->name('devoluciones.form');
 Route::post('/devoluciones/update', [registerController::class, 'updateDevoluciones'])->name('devoluciones.update');
 
 // Route of Mireya

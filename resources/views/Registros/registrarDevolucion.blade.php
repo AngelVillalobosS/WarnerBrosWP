@@ -35,43 +35,44 @@
             <div class="u-container-style u-group u-group-1" data-animation-name="customAnimationIn"
                 data-animation-duration="1000" data-animation-delay="0">
                 <div class="u-container-layout">
-                <h1>Modificar Devoluciones para Cliente ID: {{ $id_cliente }}</h1>
+                    <h2 class="u-text u-text-default u-text-1">Devoluciones<br>
+                    </h2>
+                    <div class="u-form u-form-1">
+                        <!-- Formulario -->
+                        <form action="{{ route('saveDevolucion') }}" method="POST"
+                            class="u-clearfix u-form-spacing-45 u-form-vertical u-inner-form" style="padding: 10px;">
+                            {{ csrf_field() }}
+                            <div class="u-form-group u-form-select u-form-group-1">
+                                <div class="u-form-select-wrapper">
 
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-
-<form action="{{ route('devoluciones.update') }}" method="POST">
-    @csrf
-    <input type="hidden" name="id_cliente" value="{{ $id_cliente }}">
-
-    <table>
-        <thead>
-            <tr>
-                <th>ID Venta</th>
-                <th>Fecha</th>
-                <th>Cantidad Devuelta</th>
-                <th>Modificar</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($ventas as $venta)
-                <tr>
-                    <td>{{ $venta->id_venta }}</td>
-                    <td>{{ $venta->fecha }}</td>
-                    <td>
-                        <input type="number" name="nueva_cantidad" value="{{ $venta->cantidad_devuelta }}" min="0">
-                    </td>
-                    <td>
-                        <button type="submit" name="id_venta" value="{{ $venta->id_venta }}">Actualizar</button>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</form>
+                                    <!-- Titulo Cliente -->
+                                    <label for="select-822a" class="u-label u-label-3" style="font-style: oblique;">Id -
+                                        Cliente</label>
+                                    <!-- ComboBox de Clientes -->
+                                    <select id="select-822a" name="clientes"
+                                        class="u-grey-80 u-input u-input-rectangle u-input-1" required>
+                                        @foreach($clientes as $client)
+                                        <option value="{{ $client->id_cliente }}">
+                                            {{$client->id_cliente}} - {{ $client->nombre_cliente }}
+                                            {{ $client->ap_cliente }}
+                                            {{ $client->am_cliente }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    <svg class="u-caret u-caret-svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"
+                                        height="16px" viewBox="0 0 16 16" style="fill:currentColor;"
+                                        xml:space="preserve">
+                                        <polygon class="st0" points="8,12 2,4 14,4 "></polygon>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="u-align-center u-form-group u-form-submit">
+                                <input type="submit"
+                                    class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1"
+                                    value="Registrar devolución">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

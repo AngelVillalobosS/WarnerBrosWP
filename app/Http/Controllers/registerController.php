@@ -44,6 +44,7 @@ class registerController extends Controller
         $clientes = clientes::orderby('id_cliente', 'asc')->get();
         $productos = productos::orderby('id_producto', 'asc')->get();
 
+
         return view('Registros.registrarDevolucion')
             ->with('clientes', $clientes)
             ->with('productos', $productos);
@@ -68,44 +69,30 @@ class registerController extends Controller
 
     public function saveDevolution(Request $request)
     {
-        try {
-            $validatedData = $request->validate([
-                'id_cliente' => 'required|integer|max:11',
-                'nombre' => 'required|string|max:50',
-                'ap_cliente' => 'required|string|max:30',
-                'am_cliente' => 'required|string|max:30',
-                'telefono' => 'required|integer|max:10',
-                'email' => 'required|email',
-            ]);
-    
-            // Lógica adicional aquí
-    
-        } catch (\Exception $e) {
-            // Captura errores inesperados y muéstralos
-            dd($e->getMessage());
-        }
-        // dd($request->productos);
-        $devoluciones = new devoluciones;
-        $devoluciones -> id_cliente = $request -> clientes;
-        $devoluciones -> id_producto = $request -> productos;
-        $devoluciones -> cantidad = 1;
-        $devoluciones -> motivo = $request -> motivo;
-        $devoluciones -> save();
-        
         Session::flash('success', 'La devolución fue registrada correctamente.');
-
         // Redirige a la vista que quieres mostrar el mensaje
-        return redirect()->route('registrarDevolucion');
+        return redirect()->route('devoluciones.form');
 
     }
     
-    public function showDevolucionesForm($id_cliente)
-    {
-        // Obtener todas las ventas del cliente con sus devoluciones
-        $ventas = detalles_ventas::where('id_cliente', $id_cliente)->get();
+    public function showDevolucionesForm(Request $request)
+    {   
+        $id_cliente = DB::select("SELECT id_cliente AS icCli FROM clientes ORDER BY id_cliente DESC LIMIT 1");
+        // Obtener las devoluciones relacionadas con el cliente
+        $ventas = DB::table('detalles_ventas')
+            ->join('ventas', 'detalles_ventas.id_venta', '=', 'ventas.id_venta')
+            ->select('ventas.id_venta',
+                'ventas.fecha_venta as fecha',
+                'detalles_ventas.cant_devueltas as cantidad_devuelta'
+            )
+            ->where('ventas.id_cliente', $id_cliente)
+            ->get();
 
-        // Retornar vista con los datos del cliente y sus ventas
-        return view('devoluciones.modificar', compact('ventas', 'id_cliente'));
+        // Pasar los datos a la vista
+        return view('registros.udptDevoluciones', [
+            'clientes' => $id_cliente,
+            'ventas' => $ventas,
+        ]);
     }
 
     public function updateDevoluciones(Request $request)
