@@ -9,7 +9,17 @@ class Clientes extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_cliente';
+    protected $table = 'clientes'; // Especifica el nombre de la tabla
+    protected $primaryKey = 'id_cliente'; // Clave primaria
 
-    protected $fillable = ['id_cliente', 'nombre_cliente', 'ap_cliente', 'am_cliente', 'telefono', 'correo'];
+    protected $fillable = [
+        'id_cliente',
+        'nombre_cliente',
+        'ap_cliente',
+        'am_cliente',
+        'telefono',
+        'correo'
+        
+    ];
+
 }
