@@ -1,3 +1,7 @@
+<!-- Autora: Irma Mireya Castro Carranza -->
+<!-- Esta página genera un reporte con los productos más vendidos en un rango de fechas determinado.
+     Permite al usuario seleccionar un rango de fechas para visualizar los productos más vendidos, 
+     mostrar los resultados en una tabla y ofrecer la opción de imprimir dicha tabla. -->
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="es">
 
@@ -39,34 +43,31 @@
 
                     <!-- Tabla con los productos más vendidos -->
                     @if(isset($productosMasVendidos) && $productosMasVendidos->count() > 0)
-                    <div class="u-table-responsive u-table-1" style="margin-top: 30px; text-align: center;">
-                        <table border="1" cellpadding="5" cellspacing="0" bgcolor="black" style="margin: 0 auto;">
-                            <thead>
-                                <tr>
-                                    <th style="color: white;">Producto</th>
-                                    <th style="color: white;">Cantidad Vendida</th>
-                                    <th style="color: white;">Precio</th>
-                                    <th style="color: white;">Fecha de Venta</th> <!-- Nueva columna -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($productosMasVendidos as $producto)
-                                <tr>
-                                    <td style="color: white;">{{ $producto->nom_producto }}</td>
-                                    <td style="color: white;">{{ $producto->cantidad_vendida }}</td>
-                                    <td style="color: white;">{{ $producto->precio_producto }}</td>
-                                    <td style="color: white;">{{ \Carbon\Carbon::parse($producto->fecha_venta)->format('d/m/Y') }}</td> <!-- Formatear la fecha -->
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div style="text-align: center; margin-top: 20px;">
-                        <button onclick="window.print()" class="u-black u-border-none u-btn u-btn-rectangle u-button-style">Imprimir Tabla</button>
-                    </div>
-                    @else
-                    <p style="color: red; text-align: center;">No se encontraron productos en este rango de fechas.</p>
-                    @endif
+                <div class="u-table-responsive u-table-1" style="margin-top: 30px; text-align: center;">
+                    <table border="1" cellpadding="5" cellspacing="0" bgcolor="black" style="margin: 0 auto;">
+                        <thead>
+                            <tr>
+                                <th style="color: white;">Producto</th>
+                                <th style="color: white;">Cantidad Vendida</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($productosMasVendidos as $producto)
+                            <tr>
+                                <td style="color: white;">{{ $producto->nom_producto }}</td>
+                                <td style="color: white;">{{ $producto->cantidad_vendida }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button onclick="window.print()" class="u-black u-border-none u-btn u-btn-rectangle u-button-style">Imprimir Tabla</button>
+                </div>
+                @elseif(request()->has('fecha_inicio') && request()->has('fecha_fin'))
+                <p style="color: red; text-align: center;">No se encontraron productos en este rango de fechas.</p>
+                @endif
+
                 </div>
             </div>
         </div>

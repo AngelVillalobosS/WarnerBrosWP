@@ -1,5 +1,9 @@
 <?php
 
+// Autores: Irma Mireya Castro Carranza y Angel Gabriel Villalobos Saucedo
+// Este modelo maneja la tabla 'productos' y define los atributos que pueden ser llenados
+// de forma masiva, como 'id_producto', 'id_categoria', 'nom_producto', 'cant_intventario',
+// 'precio_producto' y 'precio_alquiler'.
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,7 +23,5 @@ class Productos extends Model
         'cant_intventario',
         'precio_producto',
         'precio_alquiler'
-        
     ];
-
 }

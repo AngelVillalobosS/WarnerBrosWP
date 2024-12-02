@@ -1,3 +1,8 @@
+<!--
+    Descripción: Página para registrar nuevas categorías. Permite ingresar un nombre para la categoría y muestra un mensaje de sesión como un modal tras una acción exitosa. Incluye un formulario con campos para el ID y nombre de la categoría, así como un botón de registro.
+    Autor: Irma Mireya Castro Carranza
+-->
+
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="es">
 <head>

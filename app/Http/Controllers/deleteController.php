@@ -1,14 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Categorias;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\clientes;
 use Illuminate\Support\Facades\DB;
 
+// Autores: Irma Mireya Castro Carranza y Ángel Gabriel Villalobos Saucedo
+// Este controlador gestiona la eliminación de registros en las tablas de clientes y categorías.
+
 class deleteController extends Controller
 {
+    // Muestra la vista para eliminar clientes
     public function deleteClienteView()
     {
         $clientes = clientes::orderby('id_cliente', 'asc')->get();
@@ -16,69 +21,57 @@ class deleteController extends Controller
             ->with('clientes', $clientes);
     }
 
-    public function deleteCategoriaView(){
-        $categorias = categorias::orderby('nom_categoria','asc')
-	                                  ->get();
-        return view('Catalogos.Categorias.eliminarCategoria')->with('categorias',$categorias);
+    // Muestra la vista para eliminar categorías
+    public function deleteCategoriaView()
+    {
+        $categorias = categorias::orderby('nom_categoria', 'asc')->get();
+        return view('Catalogos.Categorias.eliminarCategoria')
+            ->with('categorias', $categorias);
     }
 
-        public function deleteCategoria(Request $request)
+    // Elimina una categoría, verificando que no tenga productos asociados
+    public function deleteCategoria(Request $request)
     {
         $idCategoria = $request->input('id_categoria');
 
-        // Verifica si el ID existe en la tabla 'categorias'
         $categoria = DB::table('categorias')->where('id_categoria', $idCategoria)->first();
 
         if ($categoria) {
-            // Verificar si la categoría tiene productos asociados
             $productos = DB::table('productos')->where('id_categoria', $idCategoria)->count();
 
             if ($productos > 0) {
-                // Si hay productos asociados, mostrar mensaje de error
                 session()->flash('mensaje', 'No se puede eliminar la categoría porque está asociada a productos.');
             } else {
-                // Elimina el registro
                 DB::table('categorias')->where('id_categoria', $idCategoria)->delete();
-
-                // Mensaje de éxito
                 session()->flash('mensaje', 'Categoría eliminada correctamente.');
             }
         } else {
-            // Mensaje de error si no existe la categoría
             session()->flash('mensaje', 'La categoría con ID ' . $idCategoria . ' no fue encontrada.');
         }
 
-        // Redirige a la vista de eliminar categoría
         return redirect()->route('eliminarCategoria');
     }
 
-
-
-
+    // Elimina un cliente, verificando que no esté asociado a ventas
     public function deleteClient(Request $request)
     {
-        // Encontrar y eliminar el cliente
-        // $cliente = Clientes::find($request->clientes);
         $idCliente = $request->input('clientes');
-        
+
         $cliente = DB::table('clientes')->where('id_cliente', $idCliente)->first();
 
-        if($cliente){
+        if ($cliente) {
             $ventas = DB::table('ventas')->where('id_cliente', $idCliente)->count();
 
             if ($ventas > 0) {
                 session()->flash('mensaje', "No se puede eliminar al cliente con id '{$idCliente}', porque está asociado a una venta.");
             } else {
-                // Delete Client
                 DB::table('clientes')->where('id_cliente', $idCliente)->delete();
-                //Success Messagge
                 session()->flash('mensaje', 'El Cliente fue eliminado correctamente');
             }
         } else {
-            session()->flash('mensaje', 'La categoria con ID '.$idCliente.' no fue encontrada');
+            session()->flash('mensaje', 'El cliente con ID ' . $idCliente . ' no fue encontrado.');
         }
 
-        // Redireccionar a una vista o lista
         return redirect()->route('eliminarCliente');
     }
 }

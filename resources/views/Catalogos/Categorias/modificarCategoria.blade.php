@@ -1,3 +1,7 @@
+<!--
+        Descripción: Página para modificar categorías. Permite seleccionar una categoría de una lista y proceder con la modificación. Además, muestra un mensaje de sesión mediante un modal.
+        Autor: Irma Mireya Castro Carranza
+    -->
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="es"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -1,3 +1,7 @@
+<!--
+    Descripción: Página para eliminar categorías. Permite seleccionar una categoría y confirmarla para eliminarla. Además, muestra un mensaje de confirmación y error mediante modales.
+    Autor: Irma Mireya Castro Carranza
+-->
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="es">
 <head>

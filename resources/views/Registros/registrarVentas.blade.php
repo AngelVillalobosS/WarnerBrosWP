@@ -1,3 +1,8 @@
+<!--
+    Descripción: Página para registrar nuevas ventas. Permite seleccionar un cliente, ingresar la fecha de la venta, elegir productos y cantidades, y agregar los productos a la lista de ventas. Al completar, se muestra el total acumulado y se puede guardar la venta. También muestra un mensaje de sesión como un modal tras una acción exitosa.
+    Autor: Irma Mireya Castro Carranza 
+-->
+
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="es">
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Categorias;
 use App\Models\clientes;
 use Illuminate\Http\Request;
+// Autores: Irma Mireya Castro Carranza, Angel Gabriel Villalobos Saucedo 
+// Este controlador maneja las vistas de consulta de las categorias, junto con sus funcionalidades 
 
 class consultController extends Controller
 {
@@ -49,12 +51,7 @@ class consultController extends Controller
     public function consultProduct(){
         
     }
-    
-    
-}
 
-class consultController extends Controller
-{
     // Regresar Vistas
     public function consultClientView(Request $request)
     {
@@ -109,32 +106,5 @@ class consultController extends Controller
         // Si el cliente es encontrado, retornar la vista con los datos
         return view('Catalogos.Clientes.consultaCliente')
             ->with('reporte', $reporte);
-    }
-
-
-    public function consultCategorieView()
-    {
-        //
-    }
-
-    public function consultProductView()
-    {
-        //
-    }
-
-    // Controlador de funcionalidad
-    public function consultClient()
-    {
-        //
-    }
-
-    public function consultCategorie()
-    {
-        //
-    }
-
-    public function consultProduct()
-    {
-        //
     }
 }

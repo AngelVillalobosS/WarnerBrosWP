@@ -1,5 +1,9 @@
 <?php
 
+// Autores: Irma Mireya Castro Carranza y Angel Gabriel Villalobos Saucedo
+// Este modelo maneja la tabla 'clientes' y define los atributos que pueden ser llenados
+// de forma masiva, como 'id_cliente', 'nombre_cliente', 'ap_cliente', 'am_cliente', 
+// 'telefono' y 'correo'.
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,7 +23,5 @@ class Clientes extends Model
         'am_cliente',
         'telefono',
         'correo'
-        
     ];
-
 }

@@ -1,3 +1,8 @@
+<!--
+    Descripción: Página para modificar una categoría existente. Permite visualizar y modificar el nombre de una categoría seleccionada mediante un formulario. Además, muestra un mensaje de sesión cuando se realiza una acción exitosa.
+    Autor: Irma Mireya Castro Carranza
+-->
+
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="es">
 <head>

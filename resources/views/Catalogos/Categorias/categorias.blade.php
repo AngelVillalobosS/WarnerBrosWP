@@ -1,3 +1,7 @@
+<!--
+    Descripción: Página para gestionar las categorías de productos. Permite registrar, modificar, eliminar y consultar categorías.
+    Autor: Irma Mireya Castro Carranza
+-->
 <!DOCTYPE html>
 <html style="font-size: 16px" lang="es">
     <head>

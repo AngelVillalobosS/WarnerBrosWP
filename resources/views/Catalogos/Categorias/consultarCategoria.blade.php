@@ -1,3 +1,7 @@
+<!--
+    Descripción: Página para consultar las categorías de productos. Muestra todas las categorías existentes en una tabla.
+    Autor: Irma Mireya Castro Carranza
+-->
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="es">
 <head>
