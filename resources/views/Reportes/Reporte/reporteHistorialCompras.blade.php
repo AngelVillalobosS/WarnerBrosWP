@@ -1,3 +1,7 @@
+<!-- Autor: Angel Gabriel Villalobos Saucedo -->
+<!-- Descripción: Estructura de la vista donde se muestra el reporte del historial de ventas basado en fechas -->
+<!-- Fecha de Creación:  Jueves 14, Noviembre 2024 -->
+<!-- Ultima modificación: Miercoles 27, Noviembre 2024 -->
 <!DOCTYPE html>
 <html lang="en">
 

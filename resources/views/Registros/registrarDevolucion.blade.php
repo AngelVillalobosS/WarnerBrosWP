@@ -1,3 +1,7 @@
+<!-- Autor: Angel Gabriel Villalobos Saucedo -->
+<!-- Descripción: Estructura de la vista que se encarga de registrar devoluciones -->
+<!-- Fecha de Creación:  Jueves 14, Noviembre 2024 -->
+<!-- Ultima modificación: Domingo 1, Diciembre 2024 -->
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="es">
 
@@ -47,30 +51,18 @@
 
                                     <!-- Titulo Cliente -->
                                     <label for="select-822a" class="u-label u-label-3" style="font-style: oblique;">Id -
-                                        Cliente</label>
-                                    <!-- ComboBox de Clientes -->
-                                    <select id="select-822a" name="clientes"
-                                        class="u-grey-80 u-input u-input-rectangle u-input-1" required>
-                                        @foreach($clientes as $client)
-                                        <option value="{{ $client->id_cliente }}">
-                                            {{$client->id_cliente}} - {{ $client->nombre_cliente }}
-                                            {{ $client->ap_cliente }}
-                                            {{ $client->am_cliente }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                    <svg class="u-caret u-caret-svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"
-                                        height="16px" viewBox="0 0 16 16" style="fill:currentColor;"
-                                        xml:space="preserve">
-                                        <polygon class="st0" points="8,12 2,4 14,4 "></polygon>
-                                    </svg>
+                                        Venta</label>
+                                    <input class="u-grey-75 u-input u-input-rectangle" type="text" name="id_venta" id="" placeholder="Ingresar ID de la venta">
+                                    <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1" href='#' type="button">Buscar Venta</button>
                                 </div>
                             </div>
                             <div class="u-align-center u-form-group u-form-submit">
                                 <input type="submit"
                                     class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1"
                                     value="Registrar devolución">
+                            </div>
+                            <div class="u-form u-form-1">
+
                             </div>
                         </form>
                     </div>

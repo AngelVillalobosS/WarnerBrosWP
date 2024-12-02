@@ -1,3 +1,8 @@
+<!-- Autor: Angel Gabriel Villalobos Saucedo -->
+<!-- Descripción: Estructura de la vista de la eliminación de un cliente -->
+<!-- Fecha de Creación:  Jueves 14, Noviembre 2024 -->
+<!-- Ultima modificación: Miercoles 27, Noviembre 2024 -->
+
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="es">
 

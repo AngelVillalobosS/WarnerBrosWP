@@ -1,4 +1,8 @@
 <?php
+// Autor: Angel Gabriel Villalobos Saucedo
+// Descripción: Modelo con el cual se accesa a la tabla: ventas
+// Fecha de Creación:  Jueves 14, Noviembre 2024
+// Ultima modificación: Miercoles 27, Noviembre 2024
 
 namespace App\Models;
 

@@ -3,6 +3,13 @@
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2021 Froala Labs
  */
+ 
+/* 
+  Autor: Froala Labs
+  Descripción: Css para el estilo de botones y varios componentes de todas las vistas
+  Fecha de Creación:  2014
+  Ultima modificación: Domingo 19, Noviembre 2024
+*/
 
 .fr-clearfix::after {
   clear: both;
