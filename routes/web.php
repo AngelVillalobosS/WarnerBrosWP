@@ -25,7 +25,7 @@ Route::get('catalogos/consultas/clientes', [consultController::class, 'consultCl
 Route::get('catalogos/consultas/consulta-cliente', [reportController::class, 'wasa'])->name('consultCliente');
 // Route of Mireya
 // Route of Bryan
-Route::get('catalogos/consultas/clientes',[consultController::class, 'consulClientView'])->name('consultarCliente');
+Route::get('catalogos/consultas/clientes',[consultController::class, 'consultClientView'])->name('consultarCliente');
 Route::get('catalogos/consultas/categorias',[consultController::class, 'consultCategorieView'])->name('consultarCategoria');
 Route::post('catalogos/consultas/categorias/funtion',[consultController::class, 'consultCategorieFun'])->name('consultCategorieFun');
     // Route of Bryan

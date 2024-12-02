@@ -47,11 +47,11 @@ class registerController extends Controller
     {
         $clientes = clientes::orderby('id_cliente', 'asc')->get();
         $productos = productos::orderby('id_producto', 'asc')->get();
+        $detallesVentas = Detalles_Ventas::orderby('id_venta', 'asc')->get();
 
 
         return view('Registros.registrarDevolucion')
-            ->with('clientes', $clientes)
-            ->with('productos', $productos);
+            ->with('detallesVentas', $detallesVentas);
     }
 
     public function registerVentaView(){

@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    @vite(['../resources/css/nicepage.css', '../resources/css/registros/registrarDevolucion.css'])
+    @vite(['../resources/css/nicepage.css', '../resources/css/registros/registrarDevolucion.css', '../resources/css/reportes/reportes/reporteEstilo.css'])
     @vite(['../resources/js/nicepage.js'])
     <meta name="generator" content="Nicepage 7.0.3, nicepage.com">
     <meta name="referrer" content="origin">
@@ -52,9 +52,36 @@
                                     <!-- Titulo Cliente -->
                                     <label for="select-822a" class="u-label u-label-3" style="font-style: oblique;">Id -
                                         Venta</label>
-                                    <input class="u-grey-75 u-input u-input-rectangle" type="text" name="id_venta" id="" placeholder="Ingresar ID de la venta">
-                                    <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1" href='#' type="button">Buscar Venta</button>
+                                    <input class="u-grey-75 u-input u-input-rectangle" type="text" name="id_venta" id=""
+                                        placeholder="Ingresar ID de la venta">
+                                    <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1"
+                                        href='#' type="button">Buscar Venta</button>
                                 </div>
+                            </div>
+                            <div>
+                                <table class="reporte-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Id Venta</th>
+                                            <th>Id Producto</th>
+                                            <th>Cantidad de devoluciones</th>
+                                            <th>Cantidad comprada</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($detallesVentas as $dvt)
+                                        <tr>
+                                            <td>{{ $dvt->id_venta }}</td>
+                                            <td>{{ $dvt->id_producto }}</td>
+                                            <td>{{ $dvt->cant_devueltas}}</td>
+                                            <td>{{ $dvt->cantidad }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    <tr>
+
+                                    </tr>
+                                </table>
                             </div>
                             <div class="u-align-center u-form-group u-form-submit">
                                 <input type="submit"
@@ -66,6 +93,7 @@
                             </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
