@@ -43,7 +43,7 @@
                     </h2>
                     <div class="u-form u-form-1">
                         <!-- Formulario -->
-                        <form action="{{ route('saveDevolucion') }}" method="POST"
+                        <form action="{{ route('devolucionesForm') }}" method="GET"
                             class="u-clearfix u-form-spacing-45 u-form-vertical u-inner-form" style="padding: 10px;">
                             {{ csrf_field() }}
                             <div class="u-form-group u-form-select u-form-group-1">
@@ -55,34 +55,10 @@
                                     <input class="u-grey-75 u-input u-input-rectangle" type="text" name="id_venta" id=""
                                         placeholder="Ingresar ID de la venta">
                                     <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1"
-                                        href='#' type="button">Buscar Venta</button>
+                                        type="submit">Buscar Venta</button>
                                 </div>
                             </div>
-                            <div>
-                                <table class="reporte-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Id Venta</th>
-                                            <th>Id Producto</th>
-                                            <th>Cantidad de devoluciones</th>
-                                            <th>Cantidad comprada</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($detallesVentas as $dvt)
-                                        <tr>
-                                            <td>{{ $dvt->id_venta }}</td>
-                                            <td>{{ $dvt->id_producto }}</td>
-                                            <td>{{ $dvt->cant_devueltas}}</td>
-                                            <td>{{ $dvt->cantidad }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                    <tr>
-
-                                    </tr>
-                                </table>
-                            </div>
+                            
                             <div class="u-align-center u-form-group u-form-submit">
                                 <input type="submit"
                                     class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1"

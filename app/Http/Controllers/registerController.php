@@ -8,7 +8,7 @@ use App\Models\Ventas;
 use App\Models\Detalles_Ventas;
 use Illuminate\Http\Request;
 use App\Models\devoluciones;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class registerController extends Controller
@@ -43,12 +43,15 @@ class registerController extends Controller
         // return view('Registros.registrarAlquiler');
     }
 
-    public function registerDevolutionView()
+    public function registerDevolutionView(Request $request)
     {
-        $clientes = clientes::orderby('id_cliente', 'asc')->get();
-        $productos = productos::orderby('id_producto', 'asc')->get();
+        // Se obtiene el valor del input con nombre "id_venta"
+        $idVenta = $request->input('id_venta');
         $detallesVentas = Detalles_Ventas::orderby('id_venta', 'asc')->get();
-
+        
+        if ($idVenta === $detallesVentas) {
+            
+        }
 
         return view('Registros.registrarDevolucion')
             ->with('detallesVentas', $detallesVentas);
@@ -90,25 +93,17 @@ class registerController extends Controller
         return redirect()->route('devoluciones.form');
 
     }
-    
+
     public function showDevolucionesForm(Request $request)
     {   
-        $id_cliente = DB::select("SELECT id_cliente AS icCli FROM clientes ORDER BY id_cliente DESC LIMIT 1");
+        $id_venta = $request->input('id_venta');
         // Obtener las devoluciones relacionadas con el cliente
-        $ventas = DB::table('detalles_ventas')
-            ->join('ventas', 'detalles_ventas.id_venta', '=', 'ventas.id_venta')
-            ->select('ventas.id_venta',
-                'ventas.fecha_venta as fecha',
-                'detalles_ventas.cant_devueltas as cantidad_devuelta'
-            )
-            ->where('ventas.id_cliente', $id_cliente)
-            ->get();
+        $ventasDetalles = DB::select('SELECT * FROM detalles_ventas WHERE id_venta = 1');
+        
 
         // Pasar los datos a la vista
-        return view('registros.udptDevoluciones', [
-            'clientes' => $id_cliente,
-            'ventas' => $ventas,
-        ]);
+        return view('registros.updtDevoluciones')
+        ->with($ventasDetalles);
     }
 
     public function updateDevoluciones(Request $request)
