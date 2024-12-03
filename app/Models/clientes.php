@@ -1,8 +1,5 @@
 <?php
-// Autor: Angel Gabriel Villalobos Saucedo
-// Descripción: Modelo con el cual se accesa a la tabla: Clientes
-// Fecha de Creación:  Jueves 14, Noviembre 2024
-// Ultima modificación: Miercoles 27, Noviembre 2024
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
