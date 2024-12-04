@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    @vite(['../resources/css/nicepage.css', '../resources/css/registros/registrarDevolucion.css'])
+    @vite(['../resources/css/nicepage.css', '../resources/css/registros/registrarDevolucion.css', '../resources/css/reportes/reportes/reporteEstilo.css'])
     @vite(['../resources/js/nicepage.js'])
     <meta name="generator" content="Nicepage 7.0.3, nicepage.com">
     <meta name="referrer" content="origin">
@@ -43,29 +43,31 @@
                     </h2>
                     <div class="u-form u-form-1">
                         <!-- Formulario -->
-                        <form action="{{ route('saveDevolucion') }}" method="POST"
+                        <form action="{{ route('showDevolucionesForm') }}" method="POST"
                             class="u-clearfix u-form-spacing-45 u-form-vertical u-inner-form" style="padding: 10px;">
-                            {{ csrf_field() }}
+                            @csrf
                             <div class="u-form-group u-form-select u-form-group-1">
                                 <div class="u-form-select-wrapper">
 
                                     <!-- Titulo Cliente -->
                                     <label for="select-822a" class="u-label u-label-3" style="font-style: oblique;">Id -
                                         Venta</label>
-                                    <input class="u-grey-75 u-input u-input-rectangle" type="text" name="id_venta" id="" placeholder="Ingresar ID de la venta">
-                                    <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1" href='#' type="button">Buscar Venta</button>
+                                    <input class="u-grey-75 u-input u-input-rectangle" type="text" name="id_venta" id=""
+                                        placeholder="Ingresar ID de la venta" required>
                                 </div>
                             </div>
+                            
                             <div class="u-align-center u-form-group u-form-submit">
                                 <input type="submit"
                                     class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1"
-                                    value="Registrar devolución">
+                                    value="Buscar Venta">
                             </div>
                             <div class="u-form u-form-1">
 
                             </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>

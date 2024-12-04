@@ -1,3 +1,10 @@
+/* 
+Autor: Angel Gabriel Villalobos Saucedo
+Descripción: Css para el estilo de reportes y tablas de consulta
+Fecha de Creación:  Jueves 14, Noviembre 2024
+Ultima modificación: Viernes 17, Noviembre 2024
+*/
+
 /* Fondo del reporte */
 .reporte-section {
     background-image: url("https://img.freepik.com/vector-premium/marmol-abstracto-textura-fondo-blanco-negro_100956-254.jpg");
@@ -8,10 +15,8 @@
   /* Contenedor principal */
   .reporte-sheet {
     min-height: 760px;
-    background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   /* Tabla de reportes */
@@ -25,16 +30,40 @@
   
   .reporte-table th, .reporte-table td {
     padding: 12px;
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #202020;
   }
   
   .reporte-table th {
-    background-color: #f5f5f5;
+    background-color: #212121;
     font-weight: bold;
+    text-align: center;
+  }
+  .reporte-table tr{
+    background-color: #424242;
+    text-align: center;
+    color: #fff;
   }
   
   .reporte-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #525252;
+  }
+  .input-frame{
+    border: #00000094 1px solid;
+    background: #0000002f;
+    text-align: center;
+  }
+
+  .submit-btn{
+    color: #fff;
+    background-color: #20202056;
+    border: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5em;
+  }
+  .submit-btn:hover{
+    color: #bebebe;
+    background-color: #ffffff25;
   }
   
   /* Título del reporte */
@@ -51,7 +80,7 @@
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
-    color: #ffffff;
+    color: #202020;
     background-color: #007bff;
     border: none;
     border-radius: 5px;
@@ -64,3 +93,19 @@
     background-color: #0056b3;
   }
   
+
+  /* Media */
+  @media print {
+    body * {
+        visibility: hidden;
+    }
+    table, table * {
+        visibility: visible;
+    }
+    table {
+        margin: 0 auto;
+    }
+    .action-buttons {
+        display: none;
+    }
+}
