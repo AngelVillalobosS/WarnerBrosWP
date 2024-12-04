@@ -9,6 +9,7 @@ use App\Models\Ventas;
 use App\Models\Detalles_Ventas;
 use Illuminate\Http\Request;
 use App\Models\devoluciones;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -32,6 +33,29 @@ class registerController extends Controller
         categorias ORDER BY id_categoria DESC LIMIT 1");
         $sigue = !empty($idultimocategoria) ? $idultimocategoria[0]->nuevaclave : 1;
         return view('Catalogos.Categorias.registrarCategoria')->with('sigue', $sigue);
+    }
+
+    public function registerCategorie(Request $request)
+    {
+        // Validar los datos ingresados
+        $request->validate([
+            'nom_categoria' => 'required|string|max:255',
+        ]);
+    
+        // Buscar o crear el registro en 'categorias'
+        $categoria = Categorias::firstOrCreate(['nom_categoria' => $request->nom_categoria]);
+    
+        // Verificar si la categoría fue creada o ya existía
+        if ($categoria->wasRecentlyCreated) {
+            // Agregar mensaje flash de éxito
+            Session::flash('mensaje', "La categoría con nombre '{$request->nom_categoria}' ha sido registrada.");
+        } else {
+            // Agregar mensaje flash indicando que ya existe
+            Session::flash('mensaje', "La categoría con nombre '{$request->nom_categoria}' ya ha sido registrada.");
+        }
+    
+        // Redirigir sin mensaje adicional
+        return redirect()->route('registrarCategoria');
     }
 
     public function registerProductView()
@@ -69,6 +93,47 @@ class registerController extends Controller
             ->with('productos', $productos);
     }
 
+    public function registerVenta(Request $request)
+    {
+        // Decodificar los productos desde el JSON que fue enviado
+        $productos = json_decode($request->productos_json); // Cambié 'productos' por 'productos_json'
+
+        // Crear la venta sin validaciones previas
+        $venta = new Ventas();
+        $venta->id_cliente = $request->id_cliente;
+        $venta->fecha_venta = Carbon::parse($request->fecha_venta);  // Convertir la fecha
+        $venta->total = 0;  // El total se actualizará después
+        $venta->save();
+
+        // Variable para calcular el total
+        $totalVenta = 0;
+
+        // Insertar los detalles de la venta
+        foreach ($productos as $producto) {
+            // Obtener el precio del producto desde la base de datos
+            $productoInfo = Productos::find($producto->id_producto);
+            $precioProducto = $productoInfo->precio_producto;
+
+            $detalleVenta = new Detalles_Ventas();
+            $detalleVenta->id_venta = $venta->id_venta;
+            $detalleVenta->id_producto = $producto->id_producto;
+            $detalleVenta->precio_unitario = $precioProducto;  // Usar el precio de la base de datos
+            $detalleVenta->cantidad = $producto->cantidad;
+            $detalleVenta->cant_devueltas = 0; // Inicializamos las devoluciones en 0
+            $detalleVenta->save();
+
+            // Actualizamos el total de la venta
+            $totalVenta += $precioProducto * $producto->cantidad;
+        }
+
+        // Actualizar el total de la venta
+        $venta->total = $totalVenta;
+        $venta->save();
+
+        // Mensaje de éxito
+        Session::flash('mensaje', "La Venta ha sido registrada.");
+        return redirect()->route('registrarVenta');
+    }
 
     // Funciones para la funcionalidad
     public function saveClient(Request $request)
@@ -137,12 +202,6 @@ class registerController extends Controller
 
         // Redirigir con mensaje de éxito
         return back()->with('success', 'Devolución actualizada correctamente.');
-    }
-
-
-    public function registerCategorie()
-    {
-        // Code of Mireya
     }
 
     public function registerProduct()
