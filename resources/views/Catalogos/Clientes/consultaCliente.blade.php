@@ -25,7 +25,7 @@
                         <tr>
                             <th>Id Cliente</th>
                             <th>Nombre Completo</th>
-                            <th>Telefono</th>
+                            <th>Teléfono</th>
                             <th>Correo</th>
                         </tr>
                     </thead>

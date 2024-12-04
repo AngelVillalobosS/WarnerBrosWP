@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <title>Consultar Categorías</title>
 
-  @vite(['../resources/css/nicepage.css', '../resources/css/catalogos/consultarCategoria.css'])
+  @vite(['../resources/css/nicepage.css', '../resources/css/catalogos/consultarCategoria.css', '../resources/css/reportes/reportes/reporteEstilo.css'])
   <script class="u-script" type="text/javascript" src="../../jquery.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="../../nicepage.js" defer=""></script>
 
@@ -18,7 +18,6 @@
 
   <section class="u-clearfix u-image u-section-1" id="sec-7822" data-image-width="626" data-image-height="391">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <a href="{{ route('catalogoCategoria') }}" class="u-border-1 u-border-active-grey-40 u-border-black u-border-hover-black u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-1">Regresar </a>
 
       <!-- Mostrar mensaje de error si no se encuentra la categoría -->
       @if(session('error'))
@@ -27,7 +26,9 @@
 
       <!-- Mostrar todas las categorías en una tabla -->
       <div style="margin-top: 20px;">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 16px; background-color: #333; color: white;">
+      <h2 class="reporte-title">Categorías registradas</h2>
+      <a href="{{ route('catalogoCategoria') }}" class="u-border-1 u-border-active-grey-40 u-border-black u-border-hover-black u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-body-color u-btn-1">Regresar </a>
+        <table class="reporte-table">
           <thead>
             <tr style="background-color: #222;">
               <th style="border: 1px solid #ddd; padding: 8px;">ID</th>
