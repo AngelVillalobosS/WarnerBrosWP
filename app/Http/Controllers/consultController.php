@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Categorias;
 use App\Models\Clientes;
 use Illuminate\Http\Request;
+// Autores: Irma Mireya Castro Carranza, Angel Gabriel Villalobos Saucedo 
+// Este controlador maneja las vistas de consulta de las categorias, junto con sus funcionalidades 
 
 class consultController extends Controller
 {

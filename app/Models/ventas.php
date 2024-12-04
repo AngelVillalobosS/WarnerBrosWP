@@ -4,6 +4,9 @@
 // Fecha de Creación:  Jueves 14, Noviembre 2024
 // Ultima modificación: Miercoles 27, Noviembre 2024
 
+// Autores: Irma Mireya Castro Carranza y Ángel Gabriel Villalobos Saucedo
+// Este modelo maneja la tabla 'ventas' y define los atributos que pueden ser llenados
+// de forma masiva, como 'id_venta', 'id_cliente', 'fecha_venta' y 'total'.
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,7 +24,5 @@ class Ventas extends Model
         'id_cliente',
         'fecha_venta',
         'total'
-        
     ];
-
 }

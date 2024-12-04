@@ -12,6 +12,8 @@ use App\Models\devoluciones;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+// Autores: Irma Mireya Castro Carranza y Ángel Gabriel Villalobos Saucedo
+// Este controlador gestiona las vistas de los modulos y las funcionalidades para registrar en sus respectivas tablas
 
 class registerController extends Controller
 {

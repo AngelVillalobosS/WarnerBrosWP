@@ -12,7 +12,8 @@ use Termwind\Components\Dd;
 
 use function PHPUnit\Framework\returnSelf;
 use function PHPUnit\Framework\returnValue;
-
+ // Autores: Irma Mireya Castro Carranza y Ángel Gabriel Villalobos Saucedo
+// Este controlador gestiona las vistas de los reportes y sus funcionalidades 
 class reportController extends Controller
 {
     public function reportContMasVendidoView()
@@ -34,19 +35,17 @@ class reportController extends Controller
     
         // Realizar la consulta para obtener los 5 productos más vendidos en el rango de fechas
         $productosMasVendidos = DB::table('Detalles_Ventas')
-            ->join('Ventas', 'Ventas.id_venta', '=', 'Detalles_Ventas.id_venta')
-            ->join('Productos', 'Productos.id_producto', '=', 'Detalles_Ventas.id_producto')
-            ->whereBetween('Ventas.fecha_venta', [$fechaInicio, $fechaFin])
-            ->select(
-                'Productos.nom_producto',
-                DB::raw('SUM(Detalles_Ventas.cantidad) as cantidad_vendida'),
-                'Productos.precio_producto',
-                'Ventas.fecha_venta'  // Agregar la fecha de la venta a la selección
-            )
-            ->groupBy('Productos.id_producto', 'Productos.nom_producto', 'Productos.precio_producto', 'Ventas.fecha_venta')
-            ->orderByDesc('cantidad_vendida')
-            ->limit(5)
-            ->get();
+        ->join('Ventas', 'Ventas.id_venta', '=', 'Detalles_Ventas.id_venta')
+        ->join('Productos', 'Productos.id_producto', '=', 'Detalles_Ventas.id_producto')
+        ->whereBetween('Ventas.fecha_venta', [$fechaInicio, $fechaFin])
+        ->select(
+            'Productos.nom_producto',
+            DB::raw('SUM(Detalles_Ventas.cantidad) as cantidad_vendida') // Sumar las cantidades vendidas
+        )
+        ->groupBy('Productos.id_producto', 'Productos.nom_producto') // Agrupar solo por producto
+        ->orderByDesc('cantidad_vendida') // Ordenar por cantidad vendida
+        ->limit(5) // Limitar a los 5 más vendidos
+        ->get();
     
         // Pasar los datos a la vista
         return view('Reportes.reporteContMasVendido', compact('productosMasVendidos', 'fechaInicio', 'fechaFin'));

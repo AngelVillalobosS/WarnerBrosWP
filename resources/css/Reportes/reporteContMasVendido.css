@@ -1,4 +1,4 @@
- .u-section-1 {
+.u-section-1 {
   background-image: url("https://img.freepik.com/vector-premium/marmol-abstracto-textura-fondo-blanco-negro_100956-254.jpg");
   background-position: 50% 50%;
 }
@@ -63,6 +63,11 @@
   background-image: none;
 }
 
+/* Cambia el color del icono del calendario a blanco */
+.u-section-1 input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 @media (max-width: 1199px) {
   .u-section-1 .u-sheet-1 {
     min-height: 514px;
@@ -96,5 +101,39 @@
 
   .u-section-1 .u-group-1 {
     width: 340px;
+  }
+}
+@media print {
+  /* Oculta los elementos innecesarios durante la impresión */
+  .u-form, .u-form-group, .u-align-center, .u-btn-submit, .u-header, .u-footer, button {
+      display: none;
+  }
+
+  /* Asegura que el título y la tabla sean visibles durante la impresión */
+  .u-text-1 {
+      font-size: 20px; /* Aumenta el tamaño del título */
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  /* Estilo de la tabla para hacerla más grande */
+  .u-table-1 {
+      width: 100%;
+      border: 2px solid #000; /* Aumenta el grosor de los bordes */
+      margin-top: 20px;
+  }
+
+  /* Estilo de las celdas de la tabla */
+  .u-table-1 th, .u-table-1 td {
+      border: 2px solid #000; /* Aumenta el grosor de los bordes */
+      padding: 10px; /* Aumenta el espacio dentro de las celdas */
+      text-align: center;
+      font-size: 16px; /* Aumenta el tamaño de la fuente en la tabla */
+  }
+
+  /* Ajusta el tamaño de la página al imprimir */
+  @page {
+      size: auto;
+      margin: 20mm;
   }
 }

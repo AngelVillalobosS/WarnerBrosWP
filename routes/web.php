@@ -1,4 +1,15 @@
 <?php
+// Descripción: Este código configura las rutas de una aplicación web en Laravel,
+// la cual gestiona diversas operaciones relacionadas con catálogos, consultas, registros, eliminación,
+// modificación de productos, clientes, y categorías. También incluye la gestión de ventas, devoluciones, y reportes.
+// La estructura está organizada en diferentes secciones para facilitar la navegación y manipulación
+// de datos a través de diversas funcionalidades que permiten interactuar con la base de datos y 
+//administrar los catálogos de clientes, productos, y categorías.
+// Además, existen rutas específicas para mostrar y guardar información de ventas y devoluciones,
+// así como generar reportes sobre el historial de compras y productos más vendidos. 
+//Cada ruta se asocia con un controlador específico que maneja las solicitudes HTTP y devuelve las vistas o los datos correspondientes.
+// Autores: Irma Mireya Castro Carranza, Angel Gabriel Villalobos Saucedo
+
 
 use App\Http\Controllers\catalogosController;
 use App\Http\Controllers\consultController;
