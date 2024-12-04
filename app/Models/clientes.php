@@ -23,5 +23,7 @@ class Clientes extends Model
         'am_cliente',
         'telefono',
         'correo'
+        
     ];
+
 }

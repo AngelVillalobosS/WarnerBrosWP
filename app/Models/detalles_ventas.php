@@ -21,5 +21,7 @@ class Detalles_Ventas extends Model
         'precio_unitario',
         'cant_devueltas',
         'cantidad'
+        
     ];
+
 }
