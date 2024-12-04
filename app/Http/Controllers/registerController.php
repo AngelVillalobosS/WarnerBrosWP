@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Categorias;
 use App\Models\Productos;
 use App\Models\Clientes;
@@ -30,7 +31,7 @@ class registerController extends Controller
         $idultimocategoria = \DB::select("SELECT id_categoria + 1 as nuevaclave FROM 
         categorias ORDER BY id_categoria DESC LIMIT 1");
         $sigue = !empty($idultimocategoria) ? $idultimocategoria[0]->nuevaclave : 1;
-        return view('Catalogos.Categorias.registrarCategoria')->with('sigue',$sigue);
+        return view('Catalogos.Categorias.registrarCategoria')->with('sigue', $sigue);
     }
 
     public function registerProductView()
@@ -48,24 +49,24 @@ class registerController extends Controller
         // Se obtiene el valor del input con nombre "id_venta"
         $idVenta = $request->input('id_venta');
         $detallesVentas = Detalles_Ventas::orderby('id_venta', 'asc')->get();
-        
+
         if ($idVenta === $detallesVentas) {
-            
         }
 
         return view('Registros.registrarDevolucion')
             ->with('detallesVentas', $detallesVentas);
     }
 
-    public function registerVentaView(){
-        $clientes = clientes::orderby('nombre_cliente','asc')
-	                                  ->get();
-        $productos = productos::orderby('nom_producto','asc')
-	                                  ->get();
-                            
+    public function registerVentaView()
+    {
+        $clientes = clientes::orderby('nombre_cliente', 'asc')
+            ->get();
+        $productos = productos::orderby('nom_producto', 'asc')
+            ->get();
+
         return view('Registros.registrarVentas')
-        ->with('clientes',$clientes)
-        ->with('productos',$productos);
+            ->with('clientes', $clientes)
+            ->with('productos', $productos);
     }
 
 
@@ -73,13 +74,13 @@ class registerController extends Controller
     public function saveClient(Request $request)
     {
         $clientes = new clientes;
-        $clientes -> id_cliente = $request -> id_cliente;
-        $clientes -> nombre_cliente = $request -> nombre_cliente;
-        $clientes -> ap_cliente = $request -> ap_cliente;
-        $clientes -> am_cliente = $request -> am_cliente;
-        $clientes -> telefono = $request -> telefono;
-        $clientes -> correo = $request -> correo;
-        $clientes -> save();
+        $clientes->id_cliente = $request->id_cliente;
+        $clientes->nombre_cliente = $request->nombre_cliente;
+        $clientes->ap_cliente = $request->ap_cliente;
+        $clientes->am_cliente = $request->am_cliente;
+        $clientes->telefono = $request->telefono;
+        $clientes->correo = $request->correo;
+        $clientes->save();
 
         Session::flash('mensaje', 'El cliente se ha registrado correctamente');
 
@@ -91,41 +92,53 @@ class registerController extends Controller
         Session::flash('success', 'La devolución fue registrada correctamente.');
         // Redirige a la vista que quieres mostrar el mensaje
         return redirect()->route('devoluciones.form');
-
     }
 
     public function showDevolucionesForm(Request $request)
-    {   
+    {
         $id_venta = $request->input('id_venta');
+        $id_wasa = 1;
+
         // Obtener las devoluciones relacionadas con el cliente
-        $ventasDetalles = DB::select('SELECT * FROM detalles_ventas WHERE id_venta = 1');
-        
+        $ventasDetalles = DB::select('SELECT * FROM detalles_ventas WHERE id_venta = ?', [$id_venta]);
 
         // Pasar los datos a la vista
         return view('registros.updtDevoluciones')
-        ->with($ventasDetalles);
+            ->with('ventasDetalles', $ventasDetalles);
     }
 
     public function updateDevoluciones(Request $request)
     {
-        // Validar los datos
+        // Validar que los datos requeridos estén presentes
         $request->validate([
-            'id_venta' => 'required|exists:detalles_ventas,id_venta',
-            'nueva_cantidad' => 'required|integer|min:0',
-            'fecha' => 'required|date',
+            'id_venta' => 'required|integer|exists:detalles_ventas,id_venta',
+            'id_producto' => 'required|integer|exists:detalles_ventas,id_producto',
+            'cant_devuelta' => 'required|integer|min:0',
         ]);
 
+        // Obtener el detalle de la venta
+        $detalleVenta = DB::table('detalles_ventas')
+            ->where('id_venta', $request->id_venta)
+            ->where('id_producto', $request->id_producto)
+            ->first();
+
+        // Validar la cantidad devuelta
+        if (!$detalleVenta || $request->cant_devuelta > $detalleVenta->cantidad) {
+            return back()->withErrors([
+                'cant_devuelta' => "La cantidad a devolver no puede ser mayor que la comprada ({$detalleVenta->cantidad}).",
+            ]);
+        }
+
         // Actualizar la cantidad devuelta
-        $venta = detalles_ventas::where('id_venta', $request->id_venta)
-                              ->where('id_cliente', $request->id_cliente)
-                              ->where('fecha', $request->fecha)
-                              ->firstOrFail();
+        DB::table('detalles_ventas')
+            ->where('id_venta', $request->id_venta)
+            ->where('id_producto', $request->id_producto)
+            ->update(['cant_devueltas' => $request->cant_devuelta]);
 
-        $venta->cantidad_devuelta = $request->nueva_cantidad;
-        $venta->save();
-
-        return redirect()->back()->with('success', 'Cantidad de devoluciones actualizada correctamente.');
+        // Redirigir con mensaje de éxito
+        return back()->with('success', 'Devolución actualizada correctamente.');
     }
+
 
     public function registerCategorie()
     {

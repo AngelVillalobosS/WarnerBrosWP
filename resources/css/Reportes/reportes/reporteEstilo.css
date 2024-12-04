@@ -36,14 +36,34 @@ Ultima modificación: Viernes 17, Noviembre 2024
   .reporte-table th {
     background-color: #212121;
     font-weight: bold;
+    text-align: center;
   }
   .reporte-table tr{
     background-color: #424242;
+    text-align: center;
     color: #fff;
   }
   
   .reporte-table tr:nth-child(even) {
     background-color: #525252;
+  }
+  .input-frame{
+    border: #00000094 1px solid;
+    background: #0000002f;
+    text-align: center;
+  }
+
+  .submit-btn{
+    color: #fff;
+    background-color: #20202056;
+    border: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5em;
+  }
+  .submit-btn:hover{
+    color: #bebebe;
+    background-color: #ffffff25;
   }
   
   /* Título del reporte */

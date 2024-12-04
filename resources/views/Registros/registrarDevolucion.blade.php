@@ -43,9 +43,9 @@
                     </h2>
                     <div class="u-form u-form-1">
                         <!-- Formulario -->
-                        <form action="{{ route('devolucionesForm') }}" method="GET"
+                        <form action="{{ route('showDevolucionesForm') }}" method="POST"
                             class="u-clearfix u-form-spacing-45 u-form-vertical u-inner-form" style="padding: 10px;">
-                            {{ csrf_field() }}
+                            @csrf
                             <div class="u-form-group u-form-select u-form-group-1">
                                 <div class="u-form-select-wrapper">
 
@@ -53,16 +53,14 @@
                                     <label for="select-822a" class="u-label u-label-3" style="font-style: oblique;">Id -
                                         Venta</label>
                                     <input class="u-grey-75 u-input u-input-rectangle" type="text" name="id_venta" id=""
-                                        placeholder="Ingresar ID de la venta">
-                                    <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1"
-                                        type="submit">Buscar Venta</button>
+                                        placeholder="Ingresar ID de la venta" required>
                                 </div>
                             </div>
                             
                             <div class="u-align-center u-form-group u-form-submit">
                                 <input type="submit"
                                     class="u-black u-border-none u-btn u-btn-submit u-button-style u-btn-1"
-                                    value="Registrar devolución">
+                                    value="Buscar Venta">
                             </div>
                             <div class="u-form u-form-1">
 

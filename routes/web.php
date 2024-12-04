@@ -55,8 +55,9 @@ Route::get('catalogos/registrar/cliente', [registerController::class, 'registerC
 Route::get('registrar/devolucion', [registerController::class, 'registerDevolutionView'])->name('registrarDevolucion');
 Route::post('registar/guardar-cliente', [registerController::class, 'saveClient'])->name('saveCliente');
 Route::post('registrar/guardar-devolucion', [registerController::class, 'saveDevolution'])->name('saveDevolucion');
-Route::get('/devoluciones/registrar', [registerController::class, 'showDevolucionesForm'])->name('devolucionesForm');
-Route::post('/devoluciones/update', [registerController::class, 'updateDevoluciones'])->name('devoluciones.update');
+Route::post('tablaDatosDevolucion/{id_venta}', [registerController::class, 'showDevolucionesForm'])->name('showDevolucionesForm');
+Route::get('Devolucion//datos',[registerController::class,'showDevolucionesForm'])->name('wasaDevuelto');
+Route::post('actualizandoDato', [registerController::class, 'updateDevoluciones'])->name('devolucionesUpdate');
 
 // Route of Mireya
 // Route of Bryan
