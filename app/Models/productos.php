@@ -19,5 +19,7 @@ class Productos extends Model
         'cant_intventario',
         'precio_producto',
         'precio_alquiler'
+        
     ];
+
 }
