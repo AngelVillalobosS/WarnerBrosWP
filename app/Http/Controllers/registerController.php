@@ -126,15 +126,22 @@ class registerController extends Controller
 
     public function updateDevoluciones(Request $request)
     {   
-        $cant_devuelta = $request->input('cant_devuelta');
+        $id_venta = $request ->input('id_venta');
+        $id_producto = $request ->input('id_producto'); 
+        $cant_devuelta = $request ->input('cant_devuelta');
+        /* $cant_devuelta = $request->input('cant_devuelta');
         // Actualizar la cantidad devuelta
         $devolucion = Detalles_Ventas::where('id_venta', $request->id_venta)
                              ->where('id_producto', $request->id_producto)
-                             ->first();
-        $devolucion->cant_devueltas = $cant_devuelta;
+                             ->first(); */
+        $devuelto = \DB::update('UPDATE detalles_ventas SET cant_devueltas = cant_devueltas - ? WHERE id_venta = ? AND id_producto = ?', [$cant_devuelta, $id_venta, $id_producto]);
+
+        $devuelto->save();
+
+       /*  $devolucion->cant_devueltas = $cant_devuelta;
         $devolucion->save();
 
-        // Redirigir con mensaje de éxito
+        // Redirigir con mensaje de éxito */
         Session::flash('success', 'Devolución exitosa');
         return redirect()->route('showDevolucionesForm');
     }

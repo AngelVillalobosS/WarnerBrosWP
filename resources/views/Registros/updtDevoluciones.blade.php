@@ -54,7 +54,7 @@
                                 </td>
                                 <td>
                                     <input class="input-frame" type="text" name="cant_devuelta"
-                                        value="{{ $vdt->cant_devueltas ?? 0 }}">
+                                        value="{{ $vdt->cant_devueltas }}">
                                 </td>
                                 <td>{{ $vdt->cantidad }}</td>
                                 <td>
