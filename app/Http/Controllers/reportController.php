@@ -1,5 +1,10 @@
 <?php
-
+/* 
+Autor: Angel Gabriel Villalobos Saucedo, Irma Mireya Castro Carranza
+Descripción: Controlador que se encarga de todos los reportes de WarnerBrosWP
+Fecha de Creación:  Jueves 14, Noviembre 2024
+Ultima modificación: Domingo 1, Diciembre 2024
+*/
 namespace App\Http\Controllers;
 use App\Models\Productos;
 use App\Models\Ventas;

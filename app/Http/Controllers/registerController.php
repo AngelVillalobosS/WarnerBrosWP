@@ -1,4 +1,10 @@
 <?php
+/* 
+Autor: Angel Gabriel Villalobos Saucedo, Irma Mireya Castro Carranza
+Descripción: Controlador que se encarga de todos los registros de WarnerBrosWP
+Fecha de Creación:  Jueves 14, Noviembre 2024
+Ultima modificación: Domingo 1, Diciembre 2024
+*/
 
 namespace App\Http\Controllers;
 
@@ -50,9 +56,6 @@ class registerController extends Controller
         $idVenta = $request->input('id_venta');
         $detallesVentas = Detalles_Ventas::orderby('id_venta', 'asc')->get();
 
-        if ($idVenta === $detallesVentas) {
-        }
-
         return view('Registros.registrarDevolucion')
             ->with('detallesVentas', $detallesVentas);
     }
@@ -97,7 +100,20 @@ class registerController extends Controller
     public function showDevolucionesForm(Request $request)
     {
         $id_venta = $request->input('id_venta');
-        $id_wasa = 1;
+
+        // Obtener el último ID de la tabla ventas
+        $ultimo = DB::select('SELECT MAX(id_venta) AS ultimo_id FROM ventas;');
+        $ultimo_id = $ultimo[0]->ultimo_id ?? null;
+
+        // Verificar si el ID enviado existe en la tabla ventas
+        $ventaExiste = DB::select('SELECT COUNT(*) AS existe FROM ventas WHERE id_venta = ?', [$id_venta]);
+        $existe = $ventaExiste[0]->existe ?? 0;
+
+        if (!$existe) {
+            // Establecer mensaje de error en la sesión y redirigir
+            Session::flash('error', 'No existe ese ID');
+            return redirect()->route('registrarDevolucion');
+        }
 
         // Obtener las devoluciones relacionadas con el cliente
         $ventasDetalles = DB::select('SELECT * FROM detalles_ventas WHERE id_venta = ?', [$id_venta]);
@@ -107,36 +123,20 @@ class registerController extends Controller
             ->with('ventasDetalles', $ventasDetalles);
     }
 
+
     public function updateDevoluciones(Request $request)
-    {
-        // Validar que los datos requeridos estén presentes
-        $request->validate([
-            'id_venta' => 'required|integer|exists:detalles_ventas,id_venta',
-            'id_producto' => 'required|integer|exists:detalles_ventas,id_producto',
-            'cant_devuelta' => 'required|integer|min:0',
-        ]);
-
-        // Obtener el detalle de la venta
-        $detalleVenta = DB::table('detalles_ventas')
-            ->where('id_venta', $request->id_venta)
-            ->where('id_producto', $request->id_producto)
-            ->first();
-
-        // Validar la cantidad devuelta
-        if (!$detalleVenta || $request->cant_devuelta > $detalleVenta->cantidad) {
-            return back()->withErrors([
-                'cant_devuelta' => "La cantidad a devolver no puede ser mayor que la comprada ({$detalleVenta->cantidad}).",
-            ]);
-        }
-
+    {   
+        $cant_devuelta = $request->input('cant_devuelta');
         // Actualizar la cantidad devuelta
-        DB::table('detalles_ventas')
-            ->where('id_venta', $request->id_venta)
-            ->where('id_producto', $request->id_producto)
-            ->update(['cant_devueltas' => $request->cant_devuelta]);
+        $devolucion = Detalles_Ventas::where('id_venta', $request->id_venta)
+                             ->where('id_producto', $request->id_producto)
+                             ->first();
+        $devolucion->cant_devueltas = $cant_devuelta;
+        $devolucion->save();
 
         // Redirigir con mensaje de éxito
-        return back()->with('success', 'Devolución actualizada correctamente.');
+        Session::flash('success', 'Devolución exitosa');
+        return redirect()->route('showDevolucionesForm');
     }
 
 

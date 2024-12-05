@@ -41,6 +41,19 @@
                 <div class="u-container-layout">
                     <h2 class="u-text u-text-default u-text-1">Devoluciones<br>
                     </h2>
+                    @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+                @endif
+
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+                @endif
                     <div class="u-form u-form-1">
                         <!-- Formulario -->
                         <form action="{{ route('showDevolucionesForm') }}" method="POST"

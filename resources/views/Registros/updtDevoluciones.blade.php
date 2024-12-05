@@ -20,11 +20,9 @@
                 </div>
                 @endif
 
-                @if($errors->any())
+                @if(session('error'))
                 <div class="alert alert-danger">
-                    @foreach($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                    @endforeach
+                    {{ session('error')}}
                 </div>
                 @endif
 
@@ -80,13 +78,13 @@ document.querySelector('form').addEventListener('submit', function(event) {
     let valid = true;
 
     document.querySelectorAll('tr').forEach(row => {
-        const cantDevuelta = row.querySelector('input[name="cant_devuelta"]').value;
-        const cantidadComprada = row.querySelector('td:nth-child(4)').textContent;
+        const cant_devuelta = row.querySelector('input[name="cant_devuelta"]').value;
+        const cantidad = row.querySelector('input[name="cantidad"]').value;
 
-        if (parseInt(cantDevuelta) > parseInt(cantidadComprada)) {
+        if (parseInt(cant_devuelta) > parseInt(cantidad)) {
             valid = false;
             alert(
-                `La cantidad devuelta (${cantDevuelta}) no puede ser mayor que la cantidad comprada (${cantidadComprada}).`
+                `La cantidad devuelta (${cant_devuelta}) no puede ser mayor que la cantidad comprada (${cantidad}).`
             );
         }
     });
